@@ -85,7 +85,7 @@ with st.sidebar:
             try:
                 resp = httpx.get(
                     f"{st.session_state.server_url}/health",
-                    headers={"Authorization": f"Bearer {API_KEY}"},
+                    headers={"X-Api-Key": API_KEY},
                     timeout=5.0,
                 )
                 if resp.status_code == 200:
@@ -169,7 +169,7 @@ def call_api_streaming(query: str, channel: str, server_url: str):
     """
     url = f"{server_url}/v1/chat/stream"
     headers = {
-        "Authorization": f"Bearer {API_KEY}",
+        "X-Api-Key": API_KEY,
         "Content-Type": "application/json",
         "Accept": "text/event-stream",
     }
