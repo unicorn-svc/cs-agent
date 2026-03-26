@@ -72,6 +72,7 @@ def classify_question(state: AgentState) -> AgentState:
             model=settings.groq_model,
             max_tokens=settings.groq_max_tokens,
             temperature=settings.groq_temperature,
+            base_url="https://api.groq.com",
         )
 
         user_prompt = USER_PROMPT_TEMPLATE.format(

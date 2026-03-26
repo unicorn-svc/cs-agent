@@ -63,8 +63,8 @@ async def _stream_response(state: dict, elapsed_ms: int):
     process_type = state.get("process_type", "auto")
 
     if process_type == "auto":
-        # 자동 답변: 토큰 단위 스트리밍
-        answer = state.get("auto_answer_text", "") or state.get("generated_answer", "")
+        # 자동 답변: LLM 생성 답변만 스트리밍 (메타데이터는 별도 이벤트)
+        answer = state.get("generated_answer", "")
         # 토큰 단위로 분할 (문장 단위)
         sentences = answer.split(". ")
         for i, sentence in enumerate(sentences):
