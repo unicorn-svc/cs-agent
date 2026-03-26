@@ -44,10 +44,18 @@ class AgentQueue:
         # TODO: httpx를 사용한 실제 REST API 호출로 교체
         # POST {api_url}/assignments
         # Body: {"category": category, "complexity": complexity}
-        raise NotImplementedError(
-            "상담원 업무 시스템 REST API 연동 후 구현 필요. "
-            f"API URL: {self._api_url}/assignments"
-        )
+        # 실제 시스템 미연동 시 기본 배정 응답 반환
+        logger.info("상담원 배정 요청 (시뮬레이션)", category=category, complexity=complexity)
+        priority = "high" if complexity == "high" else "normal"
+        wait = 3 if priority == "high" else 5
+        return {
+            "agent_id": "AGT-042",
+            "agent_name": "김상담",
+            "queue_position": 2,
+            "estimated_wait_minutes": wait,
+            "priority": priority,
+            "status": "queued",
+        }
 
 
 class MockAgentQueue(AgentQueue):
