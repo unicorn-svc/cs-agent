@@ -1,0 +1,1780 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d13" for="edge" attr.name="truncate" attr.type="string"/>
+<key id="d12" for="edge" attr.name="created_at" attr.type="long"/>
+<key id="d11" for="edge" attr.name="file_path" attr.type="string"/>
+<key id="d10" for="edge" attr.name="source_id" attr.type="string"/>
+<key id="d9" for="edge" attr.name="keywords" attr.type="string"/>
+<key id="d8" for="edge" attr.name="description" attr.type="string"/>
+<key id="d7" for="edge" attr.name="weight" attr.type="double"/>
+<key id="d6" for="node" attr.name="truncate" attr.type="string"/>
+<key id="d5" for="node" attr.name="created_at" attr.type="long"/>
+<key id="d4" for="node" attr.name="file_path" attr.type="string"/>
+<key id="d3" for="node" attr.name="source_id" attr.type="string"/>
+<key id="d2" for="node" attr.name="description" attr.type="string"/>
+<key id="d1" for="node" attr.name="entity_type" attr.type="string"/>
+<key id="d0" for="node" attr.name="entity_id" attr.type="string"/>
+<graph edgedefault="undirected"><node id="KT">
+  <data key="d0">KT</data>
+  <data key="d1">organization</data>
+  <data key="d2">KT is a telecommunications company.&lt;SEP&gt;KT is a telecommunications company that provides internet services.&lt;SEP&gt;KT is a telecommunications company.&lt;SEP&gt;KT is a telecommunications company that provides internet services.&lt;SEP&gt;KT is a telecommunications company.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53&lt;SEP&gt;chunk-cb4e823f4fa319277ab0f539f19fd8bb&lt;SEP&gt;chunk-fb58135a02fa2536ec8aa26cb4a12f88&lt;SEP&gt;chunk-e1c4a89d87857095e756ff0fe3abd5ae&lt;SEP&gt;chunk-aaaf83bdf97acbaca36561a3e99dd1c4&lt;SEP&gt;chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495953</data>
+  <data key="d6"></data>
+</node>
+<node id="Wi-Fi">
+  <data key="d0">Wi-Fi</data>
+  <data key="d1">concept</data>
+  <data key="d2">Wi-Fi is a wireless networking technology.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495895</data>
+  <data key="d6"></data>
+</node>
+<node id="기가 인터넷">
+  <data key="d0">기가 인터넷</data>
+  <data key="d1">artifact</data>
+  <data key="d2">기가 인터넷 is a type of high-speed internet service.&lt;SEP&gt;기가 인터넷 is a type of internet service.&lt;SEP&gt;기가 인터넷 is an internet plan offered by KT with a maximum speed of 1 Gbps.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53&lt;SEP&gt;chunk-fb58135a02fa2536ec8aa26cb4a12f88&lt;SEP&gt;chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495933</data>
+  <data key="d6"></data>
+</node>
+<node id="공유기">
+  <data key="d0">공유기</data>
+  <data key="d1">artifact</data>
+  <data key="d2">공유기 is a type of router.&lt;SEP&gt;공유기 is a device that connects multiple devices to a network.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53&lt;SEP&gt;chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495926</data>
+  <data key="d6"></data>
+</node>
+<node id="LAN">
+  <data key="d0">LAN</data>
+  <data key="d1">concept</data>
+  <data key="d2">LAN is a type of local area network.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495896</data>
+  <data key="d6"></data>
+</node>
+<node id="웹 브라우징">
+  <data key="d0">웹 브라우징</data>
+  <data key="d1">concept</data>
+  <data key="d2">웹 브라우징 is the act of browsing the internet.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495896</data>
+  <data key="d6"></data>
+</node>
+<node id="유튜브">
+  <data key="d0">유튜브</data>
+  <data key="d1">organization</data>
+  <data key="d2">유튜브 is a video sharing platform.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495896</data>
+  <data key="d6"></data>
+</node>
+<node id="넷플릭스">
+  <data key="d0">넷플릭스</data>
+  <data key="d1">organization</data>
+  <data key="d2">넷플릭스 is a streaming service.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495897</data>
+  <data key="d6"></data>
+</node>
+<node id="fast.com">
+  <data key="d0">fast.com</data>
+  <data key="d1">artifact</data>
+  <data key="d2">fast.com is a website for measuring internet speed.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495897</data>
+  <data key="d6"></data>
+</node>
+<node id="speedtest.net">
+  <data key="d0">speedtest.net</data>
+  <data key="d1">artifact</data>
+  <data key="d2">speedtest.net is a website for measuring internet speed.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495898</data>
+  <data key="d6"></data>
+</node>
+<node id="broadcasting통신위원회">
+  <data key="d0">broadcasting통신위원회</data>
+  <data key="d1">organization</data>
+  <data key="d2">broadcasting통신위원회 is a regulatory agency.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495898</data>
+  <data key="d6"></data>
+</node>
+<node id="KT 고객센터">
+  <data key="d0">KT 고객센터</data>
+  <data key="d1">organization</data>
+  <data key="d2">KT 고객센터 is the customer service center of KT.&lt;SEP&gt;KT 고객센터 is the customer service center for KT.&lt;SEP&gt;KT 고객센터 is the customer center of KT.&lt;SEP&gt;KT 고객센터 is the customer service center of KT.&lt;SEP&gt;KT 고객센터 is the customer center of KT.&lt;SEP&gt;KT 고객센터 is the customer service center of KT.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53&lt;SEP&gt;chunk-cb4e823f4fa319277ab0f539f19fd8bb&lt;SEP&gt;chunk-fb58135a02fa2536ec8aa26cb4a12f88&lt;SEP&gt;chunk-e1c4a89d87857095e756ff0fe3abd5ae&lt;SEP&gt;chunk-aaaf83bdf97acbaca36561a3e99dd1c4&lt;SEP&gt;chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495945</data>
+  <data key="d6"></data>
+</node>
+<node id="KT 앱">
+  <data key="d0">KT 앱</data>
+  <data key="d1">artifact</data>
+  <data key="d2">KT 앱 is the mobile application for KT.&lt;SEP&gt;KT 앱 is a mobile application provided by KT for its customers.&lt;SEP&gt;KT 앱 is a mobile application provided by KT for customers to manage their internet services.&lt;SEP&gt;KT 앱 is a mobile application provided by KT.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53&lt;SEP&gt;chunk-e1c4a89d87857095e756ff0fe3abd5ae&lt;SEP&gt;chunk-aaaf83bdf97acbaca36561a3e99dd1c4&lt;SEP&gt;chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495945</data>
+  <data key="d6"></data>
+</node>
+<node id="KT 홈페이지">
+  <data key="d0">KT 홈페이지</data>
+  <data key="d1">artifact</data>
+  <data key="d2">KT 홈페이지 is the official website for KT.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495898</data>
+  <data key="d6"></data>
+</node>
+<node id="QoS">
+  <data key="d0">QoS</data>
+  <data key="d1">concept</data>
+  <data key="d2">QoS is a type of quality of service.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495899</data>
+  <data key="d6"></data>
+</node>
+<node id="펌웨어">
+  <data key="d0">펌웨어</data>
+  <data key="d1">concept</data>
+  <data key="d2">펌웨어 is a type of software for embedded systems.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495899</data>
+  <data key="d6"></data>
+</node>
+<node id="KT 인터넷">
+  <data key="d0">KT 인터넷</data>
+  <data key="d1">artifact</data>
+  <data key="d2">KT 인터넷 is an internet service provided by KT.&lt;SEP&gt;KT 인터넷 is an internet service provided by KT.&lt;SEP&gt;KT 인터넷 is an internet service provided by KT.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88&lt;SEP&gt;chunk-e1c4a89d87857095e756ff0fe3abd5ae&lt;SEP&gt;chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495945</data>
+  <data key="d6"></data>
+</node>
+<node id="KT Shop">
+  <data key="d0">KT Shop</data>
+  <data key="d1">artifact</data>
+  <data key="d2">KT Shop is an application for KT services.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495899</data>
+  <data key="d6"></data>
+</node>
+<node id="KT 대리점">
+  <data key="d0">KT 대리점</data>
+  <data key="d1">location</data>
+  <data key="d2">KT 대리점 is a store that sells KT products.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495899</data>
+  <data key="d6"></data>
+</node>
+<node id="KT 플라자">
+  <data key="d0">KT 플라자</data>
+  <data key="d1">location</data>
+  <data key="d2">KT 플라자 is a store that sells KT products.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495899</data>
+  <data key="d6"></data>
+</node>
+<node id="신분증">
+  <data key="d0">신분증</data>
+  <data key="d1">artifact</data>
+  <data key="d2">신분증 is a type of identification document.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495899</data>
+  <data key="d6"></data>
+</node>
+<node id="주민등록증">
+  <data key="d0">주민등록증</data>
+  <data key="d1">artifact</data>
+  <data key="d2">주민등록증 is a type of identification document.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495899</data>
+  <data key="d6"></data>
+</node>
+<node id="펌웨어 업데이트">
+  <data key="d0">펌웨어 업데이트</data>
+  <data key="d1">concept</data>
+  <data key="d2">펌웨어 업데이트 is the process of updating firmware.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495901</data>
+  <data key="d6"></data>
+</node>
+<node id="네트워크 카드">
+  <data key="d0">네트워크 카드</data>
+  <data key="d1">artifact</data>
+  <data key="d2">네트워크 카드 is a type of computer hardware.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495901</data>
+  <data key="d6"></data>
+</node>
+<node id="KT 개통 장비">
+  <data key="d0">KT 개통 장비</data>
+  <data key="d1">artifact</data>
+  <data key="d2">KT 개통 장비 is a type of equipment provided by KT.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495901</data>
+  <data key="d6"></data>
+</node>
+<node id="AS">
+  <data key="d0">AS</data>
+  <data key="d1">concept</data>
+  <data key="d2">AS is a type of after-sales service.</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495901</data>
+  <data key="d6"></data>
+</node>
+<node id="공개 홈페이지">
+  <data key="d0">공개 홈페이지</data>
+  <data key="d1">artifact</data>
+  <data key="d2">The official website of KT where customers can find accurate information.</data>
+  <data key="d3">chunk-cb4e823f4fa319277ab0f539f19fd8bb</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495901</data>
+  <data key="d6"></data>
+</node>
+<node id="KT AS">
+  <data key="d0">KT AS</data>
+  <data key="d1">organization</data>
+  <data key="d2">KT AS is the after-sales service department of KT.</data>
+  <data key="d3">chunk-cb4e823f4fa319277ab0f539f19fd8bb</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495901</data>
+  <data key="d6"></data>
+</node>
+<node id="개인 공유기">
+  <data key="d0">개인 공유기</data>
+  <data key="d1">artifact</data>
+  <data key="d2">A personal wireless router.</data>
+  <data key="d3">chunk-cb4e823f4fa319277ab0f539f19fd8bb</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495901</data>
+  <data key="d6"></data>
+</node>
+<node id="운전면허증">
+  <data key="d0">운전면허증</data>
+  <data key="d1">artifact</data>
+  <data key="d2">운전면허증 is a type of identification document.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495903</data>
+  <data key="d6"></data>
+</node>
+<node id="여권">
+  <data key="d0">여권</data>
+  <data key="d1">artifact</data>
+  <data key="d2">여권 is a type of identification document.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495903</data>
+  <data key="d6"></data>
+</node>
+<node id="사업자등록증">
+  <data key="d0">사업자등록증</data>
+  <data key="d1">artifact</data>
+  <data key="d2">사업자등록증 is a type of identification document for businesses.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495903</data>
+  <data key="d6"></data>
+</node>
+<node id="법인인감증명서">
+  <data key="d0">법인인감증명서</data>
+  <data key="d1">artifact</data>
+  <data key="d2">법인인감증명서 is a type of identification document for businesses.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495903</data>
+  <data key="d6"></data>
+</node>
+<node id="외국인登録証">
+  <data key="d0">외국인登録証</data>
+  <data key="d1">artifact</data>
+  <data key="d2">外国人登録証is a type of identification document for foreigners.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495903</data>
+  <data key="d6"></data>
+</node>
+<node id="KT 공식 홈페이지">
+  <data key="d0">KT 공식 홈페이지</data>
+  <data key="d1">content</data>
+  <data key="d2">KT 공식 홈페이지 is the official website of KT.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495903</data>
+  <data key="d6"></data>
+</node>
+<node id="기존 계약자">
+  <data key="d0">기존 계약자</data>
+  <data key="d1">person</data>
+  <data key="d2">기존 계약자 is the previous contract holder.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495903</data>
+  <data key="d6"></data>
+</node>
+<node id="법정대리인">
+  <data key="d0">법정대리인</data>
+  <data key="d1">person</data>
+  <data key="d2">법정대리인 is the legal representative.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495905</data>
+  <data key="d6"></data>
+</node>
+<node id="부모">
+  <data key="d0">부모</data>
+  <data key="d1">person</data>
+  <data key="d2">부모 is the parent.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495905</data>
+  <data key="d6"></data>
+</node>
+<node id="후견인">
+  <data key="d0">후견인</data>
+  <data key="d1">person</data>
+  <data key="d2">후견인 is the guardian.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495906</data>
+  <data key="d6"></data>
+</node>
+<node id="고지서">
+  <data key="d0">고지서</data>
+  <data key="d1">artifact</data>
+  <data key="d2">고지서 is a type of bill.&lt;SEP&gt;고지서 is a bill or invoice for KT internet services.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88&lt;SEP&gt;chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495936</data>
+  <data key="d6"></data>
+</node>
+<node id="약정">
+  <data key="d0">약정</data>
+  <data key="d1">concept</data>
+  <data key="d2">약정 is a type of contract.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495906</data>
+  <data key="d6"></data>
+</node>
+<node id="위약금">
+  <data key="d0">위약금</data>
+  <data key="d1">concept</data>
+  <data key="d2">위약금 is a type of penalty.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495907</data>
+  <data key="d6"></data>
+</node>
+<node id="사은품">
+  <data key="d0">사은품</data>
+  <data key="d1">artifact</data>
+  <data key="d2">사은품 is a type of gift.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495907</data>
+  <data key="d6"></data>
+</node>
+<node id="올레 결합">
+  <data key="d0">올레 결합</data>
+  <data key="d1">artifact</data>
+  <data key="d2">올레 결합 is a type of combined product.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495907</data>
+  <data key="d6"></data>
+</node>
+<node id="IPTV">
+  <data key="d0">IPTV</data>
+  <data key="d1">artifact</data>
+  <data key="d2">IPTV is a type of television service.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495907</data>
+  <data key="d6"></data>
+</node>
+<node id="영상 스트리밍">
+  <data key="d0">영상 스트리밍</data>
+  <data key="d3">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d2">유튜브 provides 영상 스트리밍 services.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495908</data>
+  <data key="d6"></data>
+</node>
+<node id="전화">
+  <data key="d0">전화</data>
+  <data key="d1">artifact</data>
+  <data key="d2">전화 is a type of phone service.&lt;SEP&gt;전화 is a phone service provided by KT.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88&lt;SEP&gt;chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495945</data>
+  <data key="d6"></data>
+</node>
+<node id="온라인">
+  <data key="d0">온라인</data>
+  <data key="d1">concept</data>
+  <data key="d2">온라인 is a method of applying for KT internet.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495909</data>
+  <data key="d6"></data>
+</node>
+<node id="전화신청">
+  <data key="d0">전화신청</data>
+  <data key="d1">concept</data>
+  <data key="d2">전화신청 is a method of applying for KT internet.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495909</data>
+  <data key="d6"></data>
+</node>
+<node id="방문신청">
+  <data key="d0">방문신청</data>
+  <data key="d1">concept</data>
+  <data key="d2">방문신청 is a method of applying for KT internet.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495909</data>
+  <data key="d6"></data>
+</node>
+<node id="방문설치예약">
+  <data key="d0">방문설치예약</data>
+  <data key="d1">concept</data>
+  <data key="d2">방문설치예약 is a method of applying for KT internet.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495909</data>
+  <data key="d6"></data>
+</node>
+<node id="개통">
+  <data key="d0">개통</data>
+  <data key="d1">event</data>
+  <data key="d2">개통 is the process of opening a KT internet account.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495910</data>
+  <data key="d6"></data>
+</node>
+<node id="해지">
+  <data key="d0">해지</data>
+  <data key="d1">event</data>
+  <data key="d2">해지 is the process of canceling a KT internet account.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495910</data>
+  <data key="d6"></data>
+</node>
+<node id="청약철회">
+  <data key="d0">청약철회</data>
+  <data key="d1">event</data>
+  <data key="d2">청약철회 is the process of withdrawing from a KT internet contract.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495910</data>
+  <data key="d6"></data>
+</node>
+<node id="약정기간">
+  <data key="d0">약정기간</data>
+  <data key="d1">concept</data>
+  <data key="d2">약정기간 is the period of time for a KT internet contract.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495911</data>
+  <data key="d6"></data>
+</node>
+<node id="무약정">
+  <data key="d0">무약정</data>
+  <data key="d1">concept</data>
+  <data key="d2">무약정 is a type of KT internet contract with no fixed period.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495911</data>
+  <data key="d6"></data>
+</node>
+<node id="1년약정">
+  <data key="d0">1년약정</data>
+  <data key="d1">concept</data>
+  <data key="d2">1년약정 is a type of KT internet contract with a one-year period.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495911</data>
+  <data key="d6"></data>
+</node>
+<node id="2년약정">
+  <data key="d0">2년약정</data>
+  <data key="d1">concept</data>
+  <data key="d2">2년약정 is a type of KT internet contract with a two-year period.</data>
+  <data key="d3">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495912</data>
+  <data key="d6"></data>
+</node>
+<node id="KT 기사">
+  <data key="d0">KT 기사</data>
+  <data key="d1">person</data>
+  <data key="d2">KT 기사 is an installation technician working for KT.</data>
+  <data key="d3">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495924</data>
+  <data key="d6"></data>
+</node>
+<node id="기ga 인터넷">
+  <data key="d0">기ga 인터넷</data>
+  <data key="d1">concept</data>
+  <data key="d2">기ga 인터넷 refers to a type of high-speed internet service.</data>
+  <data key="d3">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495925</data>
+  <data key="d6"></data>
+</node>
+<node id="와이파이">
+  <data key="d0">와이파이</data>
+  <data key="d1">concept</data>
+  <data key="d2">와이파이 refers to a type of wireless internet connection.</data>
+  <data key="d3">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495925</data>
+  <data key="d6"></data>
+</node>
+<node id="모뎀">
+  <data key="d0">모뎀</data>
+  <data key="d1">artifact</data>
+  <data key="d2">모뎀 is a device that connects a computer to the internet.</data>
+  <data key="d3">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495926</data>
+  <data key="d6"></data>
+</node>
+<node id="에센셜">
+  <data key="d0">에센셜</data>
+  <data key="d1">concept</data>
+  <data key="d2">에센셜 is a type of internet service plan offered by KT.</data>
+  <data key="d3">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495926</data>
+  <data key="d6"></data>
+</node>
+<node id="기가 와이파이 홈">
+  <data key="d0">기가 와이파이 홈</data>
+  <data key="d1">artifact</data>
+  <data key="d2">기가 와이파이 홈 is a device that extends Wi-Fi coverage.</data>
+  <data key="d3">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495927</data>
+  <data key="d6"></data>
+</node>
+<node id="위치">
+  <data key="d0">위치</data>
+  <data key="d1">location</data>
+  <data key="d2">위치 refers to the location where the internet service is installed.</data>
+  <data key="d3">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495927</data>
+  <data key="d6"></data>
+</node>
+<node id="FTTH">
+  <data key="d0">FTTH</data>
+  <data key="d1">concept</data>
+  <data key="d2">FTTH refers to a type of fiber optic cable infrastructure.</data>
+  <data key="d3">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495927</data>
+  <data key="d6"></data>
+</node>
+<node id="VDSL">
+  <data key="d0">VDSL</data>
+  <data key="d1">concept</data>
+  <data key="d2">VDSL is a type of digital subscriber line technology.</data>
+  <data key="d3">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495928</data>
+  <data key="d6"></data>
+</node>
+<node id="Wi-Fi 중계기">
+  <data key="d0">Wi-Fi 중계기</data>
+  <data key="d1">artifact</data>
+  <data key="d2">Wi-Fi 중계기 is a device that extends Wi-Fi coverage.</data>
+  <data key="d3">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495928</data>
+  <data key="d6"></data>
+</node>
+<node id="유선 AP">
+  <data key="d0">유선 AP</data>
+  <data key="d1">artifact</data>
+  <data key="d2">유선 AP is a type of access point that connects to a network using a wired connection.</data>
+  <data key="d3">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495928</data>
+  <data key="d6"></data>
+</node>
+<node id="10기가 인터넷">
+  <data key="d0">10기가 인터넷</data>
+  <data key="d1">artifact</data>
+  <data key="d2">10기가 인터넷 is an internet plan offered by KT with a maximum speed of 10 Gbps.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495933</data>
+  <data key="d6"></data>
+</node>
+<node id="에센셜 인터넷">
+  <data key="d0">에센셜 인터넷</data>
+  <data key="d1">artifact</data>
+  <data key="d2">에센셜 인터넷 is an internet plan offered by KT with a maximum speed of 100 Mbps.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495934</data>
+  <data key="d6"></data>
+</node>
+<node id="기업용 전용회선">
+  <data key="d0">기업용 전용회선</data>
+  <data key="d1">artifact</data>
+  <data key="d2">기업용 전용회선 is a dedicated line service offered by KT for businesses.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495934</data>
+  <data key="d6"></data>
+</node>
+<node id="GS25">
+  <data key="d0">GS25</data>
+  <data key="d1">organization</data>
+  <data key="d2">GS25 is a convenience store where KT internet bills can be paid.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495934</data>
+  <data key="d6"></data>
+</node>
+<node id="CU">
+  <data key="d0">CU</data>
+  <data key="d1">organization</data>
+  <data key="d2">CU is a convenience store where KT internet bills can be paid.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495934</data>
+  <data key="d6"></data>
+</node>
+<node id="세븐일레븐">
+  <data key="d0">세븐일레븐</data>
+  <data key="d1">organization</data>
+  <data key="d2">세븐일레븐 is a convenience store where KT internet bills can be paid.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495934</data>
+  <data key="d6"></data>
+</node>
+<node id="자동이체">
+  <data key="d0">자동이체</data>
+  <data key="d1">concept</data>
+  <data key="d2">자동이체 is an automatic payment method for KT internet bills.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495936</data>
+  <data key="d6"></data>
+</node>
+<node id="지로 납부">
+  <data key="d0">지로 납부</data>
+  <data key="d1">concept</data>
+  <data key="d2">지로 납부 is a payment method for KT internet bills through banks.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495936</data>
+  <data key="d6"></data>
+</node>
+<node id="통신 복지 할인">
+  <data key="d0">통신 복지 할인</data>
+  <data key="d1">concept</data>
+  <data key="d2">통신 복지 할인 is a discount program for KT internet services offered to certain groups of people.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495936</data>
+  <data key="d6"></data>
+</node>
+<node id="기초생활수급자">
+  <data key="d0">기초생활수급자</data>
+  <data key="d1">concept</data>
+  <data key="d2">기초생활수급자 refers to people who receive basic living subsidies.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495937</data>
+  <data key="d6"></data>
+</node>
+<node id="차상위계층">
+  <data key="d0">차상위계층</data>
+  <data key="d1">concept</data>
+  <data key="d2">차상위계층 refers to people who are near the poverty line.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495937</data>
+  <data key="d6"></data>
+</node>
+<node id="장애인">
+  <data key="d0">장애인</data>
+  <data key="d1">concept</data>
+  <data key="d2">장애인 refers to people with disabilities.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495938</data>
+  <data key="d6"></data>
+</node>
+<node id="국가유공자">
+  <data key="d0">국가유공자</data>
+  <data key="d1">concept</data>
+  <data key="d2">국가유공자 refers to people who have made contributions to the country.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495938</data>
+  <data key="d6"></data>
+</node>
+<node id="만 65세 이상 노인">
+  <data key="d0">만 65세 이상 노인</data>
+  <data key="d1">concept</data>
+  <data key="d2">만 65세 이상 노인 refers to people who are 65 years old or older.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495938</data>
+  <data key="d6"></data>
+</node>
+<node id="自动이체 할인">
+  <data key="d0">自动이체 할인</data>
+  <data key="d1">concept</data>
+  <data key="d2">自动이체 할인 is a discount for automatic payment.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495938</data>
+  <data key="d6"></data>
+</node>
+<node id="페이퍼리스">
+  <data key="d0">페이퍼리스</data>
+  <data key="d1">concept</data>
+  <data key="d2">페이퍼리스 is a paperless billing service.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495939</data>
+  <data key="d6"></data>
+</node>
+<node id="KT 기업 고객센터">
+  <data key="d0">KT 기업 고객센터</data>
+  <data key="d1">organization</data>
+  <data key="d2">KT 기업 고객센터 is the enterprise customer center of KT.</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495939</data>
+  <data key="d6"></data>
+</node>
+<node id="10기가互联网">
+  <data key="d0">10기가互联网</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d2">KT provides 10기가互联网as one of its internet plans.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495940</data>
+  <data key="d6"></data>
+</node>
+<node id="企業用 전용회선">
+  <data key="d0">企業用 전용회선</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d2">KT provides 기업용 전용회선 as a dedicated line service for businesses.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495942</data>
+  <data key="d6"></data>
+</node>
+<node id="kt.com">
+  <data key="d0">kt.com</data>
+  <data key="d1">artifact</data>
+  <data key="d2">kt.com is the official website of KT.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495945</data>
+  <data key="d6"></data>
+</node>
+<node id="TV(IPTV)">
+  <data key="d0">TV(IPTV)</data>
+  <data key="d1">artifact</data>
+  <data key="d2">TV(IPTV) is an internet protocol television service provided by KT.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495945</data>
+  <data key="d6"></data>
+</node>
+<node id="전화 서비스">
+  <data key="d0">전화 서비스</data>
+  <data key="d1">artifact</data>
+  <data key="d2">전화 서비스 is a phone service provided by KT.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495946</data>
+  <data key="d6"></data>
+</node>
+<node id="이사 이전 서비스">
+  <data key="d0">이사 이전 서비스</data>
+  <data key="d1">concept</data>
+  <data key="d2">이사 이전 서비스 is a service that allows customers to transfer their internet service to a new location.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495947</data>
+  <data key="d6"></data>
+</node>
+<node id="방송통신위원회">
+  <data key="d0">방송통신위원회</data>
+  <data key="d1">organization</data>
+  <data key="d2">방송통신위원회 is a committee that regulates broadcasting and telecommunications in Korea.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495947</data>
+  <data key="d6"></data>
+</node>
+<node id="한국">
+  <data key="d0">한국</data>
+  <data key="d1">location</data>
+  <data key="d2">한국 is the country where KT is based.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495947</data>
+  <data key="d6"></data>
+</node>
+<node id="Q1">
+  <data key="d0">Q1</data>
+  <data key="d1">concept</data>
+  <data key="d2">Q1 is a question about KT internet cancellation.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495947</data>
+  <data key="d6"></data>
+</node>
+<node id="Q2">
+  <data key="d0">Q2</data>
+  <data key="d1">concept</data>
+  <data key="d2">Q2 is a question about cancellation fees.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495948</data>
+  <data key="d6"></data>
+</node>
+<node id="Q3">
+  <data key="d0">Q3</data>
+  <data key="d1">concept</data>
+  <data key="d2">Q3 is a question about fee-free cancellation.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495948</data>
+  <data key="d6"></data>
+</node>
+<node id="Q4">
+  <data key="d0">Q4</data>
+  <data key="d1">concept</data>
+  <data key="d2">Q4 is a question about when fees are stopped after cancellation.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495948</data>
+  <data key="d6"></data>
+</node>
+<node id="Q5">
+  <data key="d0">Q5</data>
+  <data key="d1">concept</data>
+  <data key="d2">Q5 is a question about returning rented equipment.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495949</data>
+  <data key="d6"></data>
+</node>
+<node id="Q6">
+  <data key="d0">Q6</data>
+  <data key="d1">concept</data>
+  <data key="d2">Q6 is a question about canceling internet and its impact on TV and phone services.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495949</data>
+  <data key="d6"></data>
+</node>
+<node id="Q7">
+  <data key="d0">Q7</data>
+  <data key="d1">concept</data>
+  <data key="d2">Q7 is a question about transferring internet service to a new location.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495949</data>
+  <data key="d6"></data>
+</node>
+<node id="Q8">
+  <data key="d0">Q8</data>
+  <data key="d1">concept</data>
+  <data key="d2">Q8 is a question about canceling internet service when moving to an area without KT coverage.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495950</data>
+  <data key="d6"></data>
+</node>
+<node id="Q9">
+  <data key="d0">Q9</data>
+  <data key="d1">concept</data>
+  <data key="d2">Q9 is a question about the gap in service when transferring internet to a new location.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495950</data>
+  <data key="d6"></data>
+</node>
+<node id="Q10">
+  <data key="d0">Q10</data>
+  <data key="d1">concept</data>
+  <data key="d2">Q10 is a question about KT's retention efforts when a customer cancels.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495950</data>
+  <data key="d6"></data>
+</node>
+<node id="Q11">
+  <data key="d0">Q11</data>
+  <data key="d1">concept</data>
+  <data key="d2">Q11 is a question about rejoining KT after cancellation.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495950</data>
+  <data key="d6"></data>
+</node>
+<node id="Q12">
+  <data key="d0">Q12</data>
+  <data key="d1">concept</data>
+  <data key="d2">Q12 is a question about canceling internet service due to the death of the account holder.</data>
+  <data key="d3">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495951</data>
+  <data key="d6"></data>
+</node>
+<node id="自动이체">
+  <data key="d0">自动이체</data>
+  <data key="d3">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d2">KT offers 자동이체 with a discount for automatic payment.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">unknown_source</data>
+  <data key="d5">1774495954</data>
+  <data key="d6"></data>
+</node>
+<edge source="KT" target="공유기">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides internet service through 공유기.</data>
+  <data key="d9">internet service,provision</data>
+  <data key="d10">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495905</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="Wi-Fi">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides Wi-Fi internet service.</data>
+  <data key="d9">internet service,provision</data>
+  <data key="d10">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495908</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="broadcasting통신위원회">
+  <data key="d7">1.0</data>
+  <data key="d8">KT complies with broadcasting통신위원회 regulations.</data>
+  <data key="d9">compliance,regulation</data>
+  <data key="d10">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495911</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="KT 고객센터">
+  <data key="d7">7.0</data>
+  <data key="d8">KT 고객센터 provides customer service for KT.&lt;SEP&gt;KT 고객센터 is the customer center of KT.&lt;SEP&gt;KT 고객센터 provides customer support for KT services.&lt;SEP&gt;KT 고객센터 provides support and service for KT customers.&lt;SEP&gt;KT 고객센터 provides support and service for KT.&lt;SEP&gt;KT operates and manages KT 고객센터.</data>
+  <data key="d9">customer service,customer support,management,operation,service,support</data>
+  <data key="d10">chunk-937a4a27ac6fe4a59352401574869b53&lt;SEP&gt;chunk-cb4e823f4fa319277ab0f539f19fd8bb&lt;SEP&gt;chunk-fb58135a02fa2536ec8aa26cb4a12f88&lt;SEP&gt;chunk-e1c4a89d87857095e756ff0fe3abd5ae&lt;SEP&gt;chunk-aaaf83bdf97acbaca36561a3e99dd1c4&lt;SEP&gt;chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495957</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="유튜브">
+  <data key="d7">1.0</data>
+  <data key="d8">KT partners with 유튜브 for content.</data>
+  <data key="d9">content,partnership</data>
+  <data key="d10">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495914</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="넷플릭스">
+  <data key="d7">1.0</data>
+  <data key="d8">KT partners with 넷플릭스 for streaming services.</data>
+  <data key="d9">partnership,streaming</data>
+  <data key="d10">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495915</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="공개 홈페이지">
+  <data key="d7">1.0</data>
+  <data key="d8">KT's official website offers information and services to customers.</data>
+  <data key="d9">information,official website</data>
+  <data key="d10">chunk-cb4e823f4fa319277ab0f539f19fd8bb</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495916</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="개인 공유기">
+  <data key="d7">1.0</data>
+  <data key="d8">KT may offer services related to personal wireless routers.</data>
+  <data key="d9">product,service</data>
+  <data key="d10">chunk-cb4e823f4fa319277ab0f539f19fd8bb</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495918</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="KT 인터넷">
+  <data key="d7">3.0</data>
+  <data key="d8">KT provides KT 인터넷.&lt;SEP&gt;KT provides KT 인터넷 as an internet service.&lt;SEP&gt;KT provides KT 인터넷.</data>
+  <data key="d9">internet service,provision,service</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88&lt;SEP&gt;chunk-e1c4a89d87857095e756ff0fe3abd5ae&lt;SEP&gt;chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495956</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="KT 대리점">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 대리점 sells KT products.</data>
+  <data key="d9">sales</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495920</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="KT 플라자">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 플라자 sells KT products.</data>
+  <data key="d9">sales</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495921</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="온라인">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 온라인 as a method of application.</data>
+  <data key="d9">application,method</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495922</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="전화신청">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 전화신청 as a method of application.</data>
+  <data key="d9">application,method</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495923</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="방문신청">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 방문신청 as a method of application.</data>
+  <data key="d9">application,method</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495923</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="방문설치예약">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 방문설치예약 as a method of application.</data>
+  <data key="d9">application,method</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495923</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="KT 기사">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 기사 works for KT and installs internet services.</data>
+  <data key="d9">employment,installation</data>
+  <data key="d10">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495930</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="KT 앱">
+  <data key="d7">4.0</data>
+  <data key="d8">KT developed the KT 앱 for its customers.&lt;SEP&gt;KT 앱 is a mobile application provided by KT for customers to manage their internet services.&lt;SEP&gt;KT 앱 is operated and managed by KT.&lt;SEP&gt;KT developed and provides KT 앱.</data>
+  <data key="d9">development,management,mobile application,operation,service</data>
+  <data key="d10">chunk-e1c4a89d87857095e756ff0fe3abd5ae&lt;SEP&gt;chunk-aaaf83bdf97acbaca36561a3e99dd1c4&lt;SEP&gt;chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495956</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="기ga 인터넷">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 기ga 인터넷 as a type of internet service.</data>
+  <data key="d9">internet service,provision</data>
+  <data key="d10">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495933</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="기가 인터넷">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 기가 인터넷 as one of its internet plans.</data>
+  <data key="d9">provision,service</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495940</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="10기가互联网">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 10기가互联网as one of its internet plans.</data>
+  <data key="d9">provision,service</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495941</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="에센셜 인터넷">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 에센셜 인터넷 as one of its internet plans.</data>
+  <data key="d9">provision,service</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495941</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="企業用 전용회선">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 기업용 전용회선 as a dedicated line service for businesses.</data>
+  <data key="d9">provision,service</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495943</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="GS25">
+  <data key="d7">1.0</data>
+  <data key="d8">GS25 is a partner of KT where internet bills can be paid.</data>
+  <data key="d9">partnership,payment</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495943</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="CU">
+  <data key="d7">1.0</data>
+  <data key="d8">CU is a partner of KT where internet bills can be paid.</data>
+  <data key="d9">partnership,payment</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495944</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="세븐일레븐">
+  <data key="d7">1.0</data>
+  <data key="d8">세븐일레븐 is a partner of KT where internet bills can be paid.</data>
+  <data key="d9">partnership,payment</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495944</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="고지서">
+  <data key="d7">1.0</data>
+  <data key="d8">KT issues 고지서 to its customers for internet services.</data>
+  <data key="d9">billing,payment</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495949</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="자동이체">
+  <data key="d7">1.0</data>
+  <data key="d8">KT offers 자동이체 as a payment method for its customers.</data>
+  <data key="d9">method,payment</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495952</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="지로 납부">
+  <data key="d7">1.0</data>
+  <data key="d8">KT offers 지로 납부 as a payment method for its customers.</data>
+  <data key="d9">method,payment</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495952</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="통신 복지 할인">
+  <data key="d7">1.0</data>
+  <data key="d8">KT offers 통신 복지 할인 as a discount program for certain groups of people.</data>
+  <data key="d9">discount,program</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495953</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="自动이체">
+  <data key="d7">1.0</data>
+  <data key="d8">KT offers 자동이체 with a discount for automatic payment.</data>
+  <data key="d9">discount,payment</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495954</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="페이퍼리스">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 페이퍼리스 as a billing option.</data>
+  <data key="d9">option,service</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495955</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="KT 기업 고객센터">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 기업 고객센터 provides support and service for KT enterprise customers.</data>
+  <data key="d9">service,support</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495956</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="kt.com">
+  <data key="d7">2.0</data>
+  <data key="d8">kt.com is developed and maintained by KT.&lt;SEP&gt;KT developed and maintains kt.com.</data>
+  <data key="d9">development,maintenance</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495957</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="전화">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 전화.</data>
+  <data key="d9">provision,service</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495958</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="TV(IPTV)">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides TV(IPTV).</data>
+  <data key="d9">provision,service</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495959</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="전화 서비스">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 전화 서비스.</data>
+  <data key="d9">provision,service</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495959</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="이사 이전 서비스">
+  <data key="d7">1.0</data>
+  <data key="d8">KT provides 이사 이전 서비스.</data>
+  <data key="d9">provision,service</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495960</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="방송통신위원회">
+  <data key="d7">1.0</data>
+  <data key="d8">방송통신위원회 regulates and supervises KT.</data>
+  <data key="d9">regulation,supervision</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495960</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT" target="한국">
+  <data key="d7">1.0</data>
+  <data key="d8">KT is located and operates in 한국.</data>
+  <data key="d9">location,operation</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495961</data>
+  <data key="d13"></data>
+</edge>
+<edge source="기가 인터넷" target="IPTV">
+  <data key="d7">1.0</data>
+  <data key="d8">기가 인터넷 is combined with IPTV.</data>
+  <data key="d9">internet,television</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495916</data>
+  <data key="d13"></data>
+</edge>
+<edge source="기가 인터넷" target="전화">
+  <data key="d7">1.0</data>
+  <data key="d8">전화 is combined with 기가 인터넷.</data>
+  <data key="d9">internet,phone</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495917</data>
+  <data key="d13"></data>
+</edge>
+<edge source="공유기" target="LAN">
+  <data key="d7">1.0</data>
+  <data key="d8">공유기 connects to LAN.</data>
+  <data key="d9">connection,networking</data>
+  <data key="d10">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495908</data>
+  <data key="d13"></data>
+</edge>
+<edge source="공유기" target="펌웨어">
+  <data key="d7">1.0</data>
+  <data key="d8">공유기 requires 펌웨어 updates for maintenance.</data>
+  <data key="d9">maintenance,update</data>
+  <data key="d10">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495911</data>
+  <data key="d13"></data>
+</edge>
+<edge source="공유기" target="모뎀">
+  <data key="d7">1.0</data>
+  <data key="d8">공유기 and 모뎀 are connected to provide internet access.</data>
+  <data key="d9">connection,internet</data>
+  <data key="d10">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495929</data>
+  <data key="d13"></data>
+</edge>
+<edge source="공유기" target="기가 와이파이 홈">
+  <data key="d7">1.0</data>
+  <data key="d8">기가 와이파이 홈 extends the Wi-Fi coverage of 공유기.</data>
+  <data key="d9">Wi-Fi,extension</data>
+  <data key="d10">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495930</data>
+  <data key="d13"></data>
+</edge>
+<edge source="유튜브" target="영상 스트리밍">
+  <data key="d7">1.0</data>
+  <data key="d8">유튜브 provides 영상 스트리밍 services.</data>
+  <data key="d9">content,service</data>
+  <data key="d10">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495910</data>
+  <data key="d13"></data>
+</edge>
+<edge source="fast.com" target="speedtest.net">
+  <data key="d7">1.0</data>
+  <data key="d8">fast.com and speedtest.net are alternative websites for measuring internet speed.</data>
+  <data key="d9">alternative,竞争</data>
+  <data key="d10">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495905</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="AS">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support for AS.</data>
+  <data key="d9">service,support</data>
+  <data key="d10">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495912</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="KT 앱">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 앱 is connected to KT 고객센터 for customer support.</data>
+  <data key="d9">connection,customer support</data>
+  <data key="d10">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495931</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="Q1">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support and answers for Q1.</data>
+  <data key="d9">answer,support</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495957</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="Q2">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support and answers for Q2.</data>
+  <data key="d9">answer,support</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495958</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="Q3">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support and answers for Q3.</data>
+  <data key="d9">answer,support</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495959</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="Q4">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support and answers for Q4.</data>
+  <data key="d9">answer,support</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495959</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="Q5">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support and answers for Q5.</data>
+  <data key="d9">answer,support</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495960</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="Q6">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support and answers for Q6.</data>
+  <data key="d9">answer,support</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495961</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="Q7">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support and answers for Q7.</data>
+  <data key="d9">answer,support</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495961</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="Q8">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support and answers for Q8.</data>
+  <data key="d9">answer,support</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495962</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="Q9">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support and answers for Q9.</data>
+  <data key="d9">answer,support</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495962</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="Q10">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support and answers for Q10.</data>
+  <data key="d9">answer,support</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495963</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="Q11">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support and answers for Q11.</data>
+  <data key="d9">answer,support</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495963</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 고객센터" target="Q12">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 고객센터 provides support and answers for Q12.</data>
+  <data key="d9">answer,support</data>
+  <data key="d10">chunk-9b23a8cc7df4b9fce797a6440b6120f1</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495964</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 앱" target="KT 홈페이지">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 앱 and KT 홈페이지 are integrated services for KT.</data>
+  <data key="d9">integration,service</data>
+  <data key="d10">chunk-937a4a27ac6fe4a59352401574869b53</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495905</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 인터넷" target="에센셜">
+  <data key="d7">1.0</data>
+  <data key="d8">에센셜 is a type of KT 인터넷 service plan.</data>
+  <data key="d9">inclusion,internet service</data>
+  <data key="d10">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495930</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 인터넷" target="위치">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 인터넷 is installed at a specific 위치.</data>
+  <data key="d9">installation,internet service</data>
+  <data key="d10">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495931</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT Shop" target="KT 공식 홈페이지">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 공식 홈페이지 provides KT Shop.</data>
+  <data key="d9">online service</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495914</data>
+  <data key="d13"></data>
+</edge>
+<edge source="신분증" target="주민등록증">
+  <data key="d7">1.0</data>
+  <data key="d8">신분증 includes 주민등록증.</data>
+  <data key="d9">document,identification</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495913</data>
+  <data key="d13"></data>
+</edge>
+<edge source="신분증" target="운전면허증">
+  <data key="d7">1.0</data>
+  <data key="d8">신분증 includes 운전면허증.</data>
+  <data key="d9">document,identification</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495914</data>
+  <data key="d13"></data>
+</edge>
+<edge source="신분증" target="여권">
+  <data key="d7">1.0</data>
+  <data key="d8">신분증 includes 여권.</data>
+  <data key="d9">document,identification</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495915</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT AS" target="개인 공유기">
+  <data key="d7">1.0</data>
+  <data key="d8">KT AS may not be responsible for issues with personal wireless routers.</data>
+  <data key="d9">support,troubleshooting</data>
+  <data key="d10">chunk-cb4e823f4fa319277ab0f539f19fd8bb</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495912</data>
+  <data key="d13"></data>
+</edge>
+<edge source="여권" target="외국인登録証">
+  <data key="d7">1.0</data>
+  <data key="d8">외국인登録証is used with 여권.</data>
+  <data key="d9">foreigner,identification</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495914</data>
+  <data key="d13"></data>
+</edge>
+<edge source="사업자등록증" target="법인인감증명서">
+  <data key="d7">1.0</data>
+  <data key="d8">사업자등록증 is used with 법인인감증명서.</data>
+  <data key="d9">business,identification</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495913</data>
+  <data key="d13"></data>
+</edge>
+<edge source="기존 계약자" target="법정대리인">
+  <data key="d7">1.0</data>
+  <data key="d8">기존 계약자 is represented by 법정대리인.</data>
+  <data key="d9">contract,representation</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495915</data>
+  <data key="d13"></data>
+</edge>
+<edge source="부모" target="후견인">
+  <data key="d7">1.0</data>
+  <data key="d8">부모 can be 후견인.</data>
+  <data key="d9">family,guardianship</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495915</data>
+  <data key="d13"></data>
+</edge>
+<edge source="고지서" target="약정">
+  <data key="d7">1.0</data>
+  <data key="d8">고지서 is related to 약정.</data>
+  <data key="d9">billing,contract</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495915</data>
+  <data key="d13"></data>
+</edge>
+<edge source="약정" target="위약금">
+  <data key="d7">1.0</data>
+  <data key="d8">위약금 is related to 약정.</data>
+  <data key="d9">contract,penalty</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495916</data>
+  <data key="d13"></data>
+</edge>
+<edge source="사은품" target="올레 결합">
+  <data key="d7">1.0</data>
+  <data key="d8">사은품 is included in 올레 결합.</data>
+  <data key="d9">gift,product</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495916</data>
+  <data key="d13"></data>
+</edge>
+<edge source="개통" target="해지">
+  <data key="d7">1.0</data>
+  <data key="d8">개통 is related to 해지.</data>
+  <data key="d9">cancellation,process</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495919</data>
+  <data key="d13"></data>
+</edge>
+<edge source="해지" target="청약철회">
+  <data key="d7">1.0</data>
+  <data key="d8">청약철회 is related to 해지.</data>
+  <data key="d9">cancellation,process</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495920</data>
+  <data key="d13"></data>
+</edge>
+<edge source="약정기간" target="무약정">
+  <data key="d7">1.0</data>
+  <data key="d8">약정기간 includes 무약정.</data>
+  <data key="d9">contract,period</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495920</data>
+  <data key="d13"></data>
+</edge>
+<edge source="약정기간" target="1년약정">
+  <data key="d7">1.0</data>
+  <data key="d8">약정기간 includes 1년약정.</data>
+  <data key="d9">contract,period</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495921</data>
+  <data key="d13"></data>
+</edge>
+<edge source="약정기간" target="2년약정">
+  <data key="d7">1.0</data>
+  <data key="d8">약정기간 includes 2년약정.</data>
+  <data key="d9">contract,period</data>
+  <data key="d10">chunk-fb58135a02fa2536ec8aa26cb4a12f88</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495922</data>
+  <data key="d13"></data>
+</edge>
+<edge source="KT 기사" target="위치">
+  <data key="d7">1.0</data>
+  <data key="d8">KT 기사 visits the 위치 to install internet services.</data>
+  <data key="d9">installation,visit</data>
+  <data key="d10">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495932</data>
+  <data key="d13"></data>
+</edge>
+<edge source="기ga 인터넷" target="FTTH">
+  <data key="d7">1.0</data>
+  <data key="d8">기ga 인터넷 requires FTTH infrastructure.</data>
+  <data key="d9">infrastructure,requirement</data>
+  <data key="d10">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495931</data>
+  <data key="d13"></data>
+</edge>
+<edge source="에센셜" target="VDSL">
+  <data key="d7">1.0</data>
+  <data key="d8">에센셜 includes VDSL technology.</data>
+  <data key="d9">inclusion,technology</data>
+  <data key="d10">chunk-e1c4a89d87857095e756ff0fe3abd5ae</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495931</data>
+  <data key="d13"></data>
+</edge>
+<edge source="통신 복지 할인" target="기초생활수급자">
+  <data key="d7">1.0</data>
+  <data key="d8">기초생활수급자 are eligible for 통신 복지 할인.</data>
+  <data key="d9">benefit,eligibility</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495944</data>
+  <data key="d13"></data>
+</edge>
+<edge source="통신 복지 할인" target="차상위계층">
+  <data key="d7">1.0</data>
+  <data key="d8">차상위계층 are eligible for 통신 복지 할인.</data>
+  <data key="d9">benefit,eligibility</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495944</data>
+  <data key="d13"></data>
+</edge>
+<edge source="통신 복지 할인" target="장애인">
+  <data key="d7">1.0</data>
+  <data key="d8">장애인 are eligible for 통신 복지 할인.</data>
+  <data key="d9">benefit,eligibility</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495946</data>
+  <data key="d13"></data>
+</edge>
+<edge source="통신 복지 할인" target="국가유공자">
+  <data key="d7">1.0</data>
+  <data key="d8">국가유공자 are eligible for 통신 복지 할인.</data>
+  <data key="d9">benefit,eligibility</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495948</data>
+  <data key="d13"></data>
+</edge>
+<edge source="통신 복지 할인" target="만 65세 이상 노인">
+  <data key="d7">1.0</data>
+  <data key="d8">만 65세 이상 노인 are eligible for 통신 복지 할인.</data>
+  <data key="d9">benefit,eligibility</data>
+  <data key="d10">chunk-aaaf83bdf97acbaca36561a3e99dd1c4</data>
+  <data key="d11">unknown_source</data>
+  <data key="d12">1774495950</data>
+  <data key="d13"></data>
+</edge>
+</graph></graphml>

@@ -1,0 +1,12 @@
+# LightRAG
+lightrag-hku>=1.0.0
+
+# OpenAI (임베딩)
+openai>=1.0.0
+
+# Environment
+python-dotenv>=1.0.0
+
+# Utilities
+tqdm>=4.65.0
+tiktoken>=0.5.0

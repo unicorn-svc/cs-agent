@@ -1,0 +1,977 @@
+{
+  "KT": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53",
+      "chunk-cb4e823f4fa319277ab0f539f19fd8bb",
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88",
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae",
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4",
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 6,
+    "update_time": 1774495953,
+    "_id": "KT"
+  },
+  "Wi-Fi": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495895,
+    "update_time": 1774495895,
+    "_id": "Wi-Fi"
+  },
+  "기가 인터넷": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53",
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88",
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 3,
+    "update_time": 1774495933,
+    "_id": "기가 인터넷"
+  },
+  "공유기": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53",
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae"
+    ],
+    "count": 2,
+    "update_time": 1774495925,
+    "_id": "공유기"
+  },
+  "LAN": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495895,
+    "update_time": 1774495895,
+    "_id": "LAN"
+  },
+  "웹 브라우징": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495896,
+    "update_time": 1774495896,
+    "_id": "웹 브라우징"
+  },
+  "유튜브": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495896,
+    "update_time": 1774495896,
+    "_id": "유튜브"
+  },
+  "넷플릭스": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495896,
+    "update_time": 1774495896,
+    "_id": "넷플릭스"
+  },
+  "fast.com": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495897,
+    "update_time": 1774495897,
+    "_id": "fast.com"
+  },
+  "speedtest.net": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495898,
+    "update_time": 1774495898,
+    "_id": "speedtest.net"
+  },
+  "broadcasting통신위원회": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495898,
+    "update_time": 1774495898,
+    "_id": "broadcasting통신위원회"
+  },
+  "KT 고객센터": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53",
+      "chunk-cb4e823f4fa319277ab0f539f19fd8bb",
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88",
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae",
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4",
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 6,
+    "update_time": 1774495945,
+    "_id": "KT 고객센터"
+  },
+  "KT 앱": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53",
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae",
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4",
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 4,
+    "update_time": 1774495945,
+    "_id": "KT 앱"
+  },
+  "KT 홈페이지": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495898,
+    "update_time": 1774495898,
+    "_id": "KT 홈페이지"
+  },
+  "QoS": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495898,
+    "update_time": 1774495898,
+    "_id": "QoS"
+  },
+  "펌웨어": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495898,
+    "update_time": 1774495898,
+    "_id": "펌웨어"
+  },
+  "KT 인터넷": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88",
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae",
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 3,
+    "update_time": 1774495945,
+    "_id": "KT 인터넷"
+  },
+  "KT Shop": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495899,
+    "update_time": 1774495899,
+    "_id": "KT Shop"
+  },
+  "KT 대리점": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495899,
+    "update_time": 1774495899,
+    "_id": "KT 대리점"
+  },
+  "KT 플라자": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495899,
+    "update_time": 1774495899,
+    "_id": "KT 플라자"
+  },
+  "신분증": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495899,
+    "update_time": 1774495899,
+    "_id": "신분증"
+  },
+  "주민등록증": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495899,
+    "update_time": 1774495899,
+    "_id": "주민등록증"
+  },
+  "펌웨어 업데이트": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495901,
+    "update_time": 1774495901,
+    "_id": "펌웨어 업데이트"
+  },
+  "네트워크 카드": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495901,
+    "update_time": 1774495901,
+    "_id": "네트워크 카드"
+  },
+  "KT 개통 장비": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495901,
+    "update_time": 1774495901,
+    "_id": "KT 개통 장비"
+  },
+  "AS": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495901,
+    "update_time": 1774495901,
+    "_id": "AS"
+  },
+  "공개 홈페이지": {
+    "chunk_ids": [
+      "chunk-cb4e823f4fa319277ab0f539f19fd8bb"
+    ],
+    "count": 1,
+    "create_time": 1774495901,
+    "update_time": 1774495901,
+    "_id": "공개 홈페이지"
+  },
+  "KT AS": {
+    "chunk_ids": [
+      "chunk-cb4e823f4fa319277ab0f539f19fd8bb"
+    ],
+    "count": 1,
+    "create_time": 1774495901,
+    "update_time": 1774495901,
+    "_id": "KT AS"
+  },
+  "개인 공유기": {
+    "chunk_ids": [
+      "chunk-cb4e823f4fa319277ab0f539f19fd8bb"
+    ],
+    "count": 1,
+    "create_time": 1774495901,
+    "update_time": 1774495901,
+    "_id": "개인 공유기"
+  },
+  "운전면허증": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495903,
+    "update_time": 1774495903,
+    "_id": "운전면허증"
+  },
+  "여권": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495903,
+    "update_time": 1774495903,
+    "_id": "여권"
+  },
+  "사업자등록증": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495903,
+    "update_time": 1774495903,
+    "_id": "사업자등록증"
+  },
+  "법인인감증명서": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495903,
+    "update_time": 1774495903,
+    "_id": "법인인감증명서"
+  },
+  "외국인登録証": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495903,
+    "update_time": 1774495903,
+    "_id": "외국인登録証"
+  },
+  "KT 공식 홈페이지": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495903,
+    "update_time": 1774495903,
+    "_id": "KT 공식 홈페이지"
+  },
+  "기존 계약자": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495903,
+    "update_time": 1774495903,
+    "_id": "기존 계약자"
+  },
+  "법정대리인": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495905,
+    "update_time": 1774495905,
+    "_id": "법정대리인"
+  },
+  "부모": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495905,
+    "update_time": 1774495905,
+    "_id": "부모"
+  },
+  "후견인": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495906,
+    "update_time": 1774495906,
+    "_id": "후견인"
+  },
+  "고지서": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88",
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 2,
+    "update_time": 1774495936,
+    "_id": "고지서"
+  },
+  "약정": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495906,
+    "update_time": 1774495906,
+    "_id": "약정"
+  },
+  "위약금": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495906,
+    "update_time": 1774495906,
+    "_id": "위약금"
+  },
+  "사은품": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495906,
+    "update_time": 1774495906,
+    "_id": "사은품"
+  },
+  "올레 결합": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495906,
+    "update_time": 1774495906,
+    "_id": "올레 결합"
+  },
+  "IPTV": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495907,
+    "update_time": 1774495907,
+    "_id": "IPTV"
+  },
+  "전화": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88",
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 2,
+    "update_time": 1774495945,
+    "_id": "전화"
+  },
+  "영상 스트리밍": {
+    "chunk_ids": [
+      "chunk-937a4a27ac6fe4a59352401574869b53"
+    ],
+    "count": 1,
+    "create_time": 1774495908,
+    "update_time": 1774495908,
+    "_id": "영상 스트리밍"
+  },
+  "온라인": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495909,
+    "update_time": 1774495909,
+    "_id": "온라인"
+  },
+  "전화신청": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495909,
+    "update_time": 1774495909,
+    "_id": "전화신청"
+  },
+  "방문신청": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495909,
+    "update_time": 1774495909,
+    "_id": "방문신청"
+  },
+  "방문설치예약": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495909,
+    "update_time": 1774495909,
+    "_id": "방문설치예약"
+  },
+  "개통": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495910,
+    "update_time": 1774495910,
+    "_id": "개통"
+  },
+  "해지": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495910,
+    "update_time": 1774495910,
+    "_id": "해지"
+  },
+  "청약철회": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495910,
+    "update_time": 1774495910,
+    "_id": "청약철회"
+  },
+  "약정기간": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495910,
+    "update_time": 1774495910,
+    "_id": "약정기간"
+  },
+  "무약정": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495911,
+    "update_time": 1774495911,
+    "_id": "무약정"
+  },
+  "1년약정": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495911,
+    "update_time": 1774495911,
+    "_id": "1년약정"
+  },
+  "2년약정": {
+    "chunk_ids": [
+      "chunk-fb58135a02fa2536ec8aa26cb4a12f88"
+    ],
+    "count": 1,
+    "create_time": 1774495911,
+    "update_time": 1774495911,
+    "_id": "2년약정"
+  },
+  "KT 기사": {
+    "chunk_ids": [
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae"
+    ],
+    "count": 1,
+    "create_time": 1774495924,
+    "update_time": 1774495924,
+    "_id": "KT 기사"
+  },
+  "기ga 인터넷": {
+    "chunk_ids": [
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae"
+    ],
+    "count": 1,
+    "create_time": 1774495924,
+    "update_time": 1774495924,
+    "_id": "기ga 인터넷"
+  },
+  "와이파이": {
+    "chunk_ids": [
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae"
+    ],
+    "count": 1,
+    "create_time": 1774495924,
+    "update_time": 1774495924,
+    "_id": "와이파이"
+  },
+  "모뎀": {
+    "chunk_ids": [
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae"
+    ],
+    "count": 1,
+    "create_time": 1774495926,
+    "update_time": 1774495926,
+    "_id": "모뎀"
+  },
+  "에센셜": {
+    "chunk_ids": [
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae"
+    ],
+    "count": 1,
+    "create_time": 1774495926,
+    "update_time": 1774495926,
+    "_id": "에센셜"
+  },
+  "기가 와이파이 홈": {
+    "chunk_ids": [
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae"
+    ],
+    "count": 1,
+    "create_time": 1774495927,
+    "update_time": 1774495927,
+    "_id": "기가 와이파이 홈"
+  },
+  "위치": {
+    "chunk_ids": [
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae"
+    ],
+    "count": 1,
+    "create_time": 1774495927,
+    "update_time": 1774495927,
+    "_id": "위치"
+  },
+  "FTTH": {
+    "chunk_ids": [
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae"
+    ],
+    "count": 1,
+    "create_time": 1774495927,
+    "update_time": 1774495927,
+    "_id": "FTTH"
+  },
+  "VDSL": {
+    "chunk_ids": [
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae"
+    ],
+    "count": 1,
+    "create_time": 1774495928,
+    "update_time": 1774495928,
+    "_id": "VDSL"
+  },
+  "Wi-Fi 중계기": {
+    "chunk_ids": [
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae"
+    ],
+    "count": 1,
+    "create_time": 1774495928,
+    "update_time": 1774495928,
+    "_id": "Wi-Fi 중계기"
+  },
+  "유선 AP": {
+    "chunk_ids": [
+      "chunk-e1c4a89d87857095e756ff0fe3abd5ae"
+    ],
+    "count": 1,
+    "create_time": 1774495928,
+    "update_time": 1774495928,
+    "_id": "유선 AP"
+  },
+  "10기가 인터넷": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495933,
+    "update_time": 1774495933,
+    "_id": "10기가 인터넷"
+  },
+  "에센셜 인터넷": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495933,
+    "update_time": 1774495933,
+    "_id": "에센셜 인터넷"
+  },
+  "기업용 전용회선": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495933,
+    "update_time": 1774495933,
+    "_id": "기업용 전용회선"
+  },
+  "GS25": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495933,
+    "update_time": 1774495933,
+    "_id": "GS25"
+  },
+  "CU": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495933,
+    "update_time": 1774495933,
+    "_id": "CU"
+  },
+  "세븐일레븐": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495934,
+    "update_time": 1774495934,
+    "_id": "세븐일레븐"
+  },
+  "자동이체": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495936,
+    "update_time": 1774495936,
+    "_id": "자동이체"
+  },
+  "지로 납부": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495936,
+    "update_time": 1774495936,
+    "_id": "지로 납부"
+  },
+  "통신 복지 할인": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495936,
+    "update_time": 1774495936,
+    "_id": "통신 복지 할인"
+  },
+  "기초생활수급자": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495936,
+    "update_time": 1774495936,
+    "_id": "기초생활수급자"
+  },
+  "차상위계층": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495936,
+    "update_time": 1774495936,
+    "_id": "차상위계층"
+  },
+  "장애인": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495938,
+    "update_time": 1774495938,
+    "_id": "장애인"
+  },
+  "국가유공자": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495938,
+    "update_time": 1774495938,
+    "_id": "국가유공자"
+  },
+  "만 65세 이상 노인": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495938,
+    "update_time": 1774495938,
+    "_id": "만 65세 이상 노인"
+  },
+  "自动이체 할인": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495938,
+    "update_time": 1774495938,
+    "_id": "自动이체 할인"
+  },
+  "페이퍼리스": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495938,
+    "update_time": 1774495938,
+    "_id": "페이퍼리스"
+  },
+  "KT 기업 고객센터": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495939,
+    "update_time": 1774495939,
+    "_id": "KT 기업 고객센터"
+  },
+  "10기가互联网": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495940,
+    "update_time": 1774495940,
+    "_id": "10기가互联网"
+  },
+  "企業用 전용회선": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495942,
+    "update_time": 1774495942,
+    "_id": "企業用 전용회선"
+  },
+  "kt.com": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495945,
+    "update_time": 1774495945,
+    "_id": "kt.com"
+  },
+  "TV(IPTV)": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495945,
+    "update_time": 1774495945,
+    "_id": "TV(IPTV)"
+  },
+  "전화 서비스": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495945,
+    "update_time": 1774495945,
+    "_id": "전화 서비스"
+  },
+  "이사 이전 서비스": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495947,
+    "update_time": 1774495947,
+    "_id": "이사 이전 서비스"
+  },
+  "방송통신위원회": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495947,
+    "update_time": 1774495947,
+    "_id": "방송통신위원회"
+  },
+  "한국": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495947,
+    "update_time": 1774495947,
+    "_id": "한국"
+  },
+  "Q1": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495947,
+    "update_time": 1774495947,
+    "_id": "Q1"
+  },
+  "Q2": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495947,
+    "update_time": 1774495947,
+    "_id": "Q2"
+  },
+  "Q3": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495947,
+    "update_time": 1774495947,
+    "_id": "Q3"
+  },
+  "Q4": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495948,
+    "update_time": 1774495948,
+    "_id": "Q4"
+  },
+  "Q5": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495949,
+    "update_time": 1774495949,
+    "_id": "Q5"
+  },
+  "Q6": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495949,
+    "update_time": 1774495949,
+    "_id": "Q6"
+  },
+  "Q7": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495949,
+    "update_time": 1774495949,
+    "_id": "Q7"
+  },
+  "Q8": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495949,
+    "update_time": 1774495949,
+    "_id": "Q8"
+  },
+  "Q9": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495949,
+    "update_time": 1774495949,
+    "_id": "Q9"
+  },
+  "Q10": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495950,
+    "update_time": 1774495950,
+    "_id": "Q10"
+  },
+  "Q11": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495950,
+    "update_time": 1774495950,
+    "_id": "Q11"
+  },
+  "Q12": {
+    "chunk_ids": [
+      "chunk-9b23a8cc7df4b9fce797a6440b6120f1"
+    ],
+    "count": 1,
+    "create_time": 1774495951,
+    "update_time": 1774495951,
+    "_id": "Q12"
+  },
+  "自动이체": {
+    "chunk_ids": [
+      "chunk-aaaf83bdf97acbaca36561a3e99dd1c4"
+    ],
+    "count": 1,
+    "create_time": 1774495954,
+    "update_time": 1774495954,
+    "_id": "自动이체"
+  }
+}

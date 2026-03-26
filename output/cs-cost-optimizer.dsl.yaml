@@ -1,0 +1,667 @@
+app:
+  description: FAQ 자동 응답으로 상담원 투입 건수를 최소화하고, 처리 건수 대비 운영 비용을 지속적으로 낮추며 고객센터 규모를 효율적으로
+    유지하는 비용 절감 에이전트
+  icon: 💰
+  icon_background: '#E8F5E9'
+  icon_type: emoji
+  mode: advanced-chat
+  name: 고객센터 운영 비용 최적화 에이전트
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/groq:0.0.12@38f75b2f4a3687af7b0947693c7903f5c7d8756f217ea492b8b81de6f16601f6
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: 안녕하세요, 고객센터 비용 최적화 에이전트입니다. 제품에 대해 궁금한 점을 질문해 주세요. FAQ 기반으로
+      신속하게 답변드리겠습니다.
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - 충전 케이블 연결 방법을 알려주세요
+    - 환불 절차가 어떻게 되나요
+    - 배송 현황을 확인하고 싶습니다
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: edge-1-2
+      source: '1'
+      sourceHandle: source
+      target: '2'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: code
+      id: edge-2-3
+      source: '2'
+      sourceHandle: source
+      target: '3'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: code
+        targetType: code
+      id: edge-3-4
+      source: '3'
+      sourceHandle: source
+      target: '4'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: code
+        targetType: if-else
+      id: edge-4-5
+      source: '4'
+      sourceHandle: source
+      target: '5'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: if-else
+        targetType: llm
+      id: edge-5-6
+      source: '5'
+      sourceHandle: 'true'
+      target: '6'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: if-else
+        targetType: code
+      id: edge-5-9
+      source: '5'
+      sourceHandle: 'false'
+      target: '9'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: code
+      id: edge-6-7
+      source: '6'
+      sourceHandle: source
+      target: '7'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: code
+        targetType: answer
+      id: edge-7-8
+      source: '7'
+      sourceHandle: source
+      target: '8'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: code
+        targetType: answer
+      id: edge-9-10
+      source: '9'
+      sourceHandle: source
+      target: '10'
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        desc: 고객 질문 및 문의 채널 입력, MOCK 프리셋 제어 변수 포함
+        selected: false
+        title: 시작
+        type: start
+        variables:
+        - label: 문의 채널
+          options:
+          - 웹채팅
+          - 카카오톡
+          - 전화
+          - 이메일
+          required: true
+          type: select
+          variable: inquiry_channel
+        - label: MOCK 프리셋
+          options:
+          - default
+          - empty
+          - error
+          - timeout
+          required: false
+          type: select
+          variable: mock_preset
+        - label: MOCK 오버라이드
+          max_length: 1000
+          options: []
+          required: false
+          type: text-input
+          variable: mock_override
+      height: 200
+      id: '1'
+      position:
+        x: 30
+        y: 300
+      positionAbsolute:
+        x: 30
+        y: 300
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 고객 질문의 복잡도와 FAQ 처리 가능 여부를 판단하여 JSON으로 분류 결과를 출력
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 5
+        model:
+          completion_params:
+            max_tokens: 512
+            temperature: 0.1
+          mode: chat
+          name: meta-llama/llama-4-scout-17b-16e-instruct
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: system-prompt
+          role: system
+          text: '당신은 고객 문의 분류 전문가입니다.
+
+            고객의 질문을 분석하여 아래 기준으로 분류하세요.
+
+
+            ## 분류 기준
+
+            - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제
+            분쟁, 복합 문의)
+
+            - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+
+
+            ## 응답 형식
+
+            반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+
+            {"complexity": "low 또는 high", "category": "카테고리명"}
+
+            '
+        - id: user-prompt
+          role: user
+          text: '[문의 채널] {{#1.inquiry_channel#}}
+
+            [고객 질문] {{#sys.query#}}
+
+            '
+        selected: false
+        title: 질문 분류
+        type: llm
+        vision:
+          enabled: false
+      height: 150
+      id: '2'
+      position:
+        x: 334
+        y: 300
+      positionAbsolute:
+        x: 334
+        y: 300
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(llm_output: str) -> dict:\n    \"\"\"LLM 분류\
+          \ 결과 JSON을 파싱하여 개별 변수로 분리\"\"\"\n    try:\n        # JSON 부분만 추출 (LLM이 부가\
+          \ 텍스트를 포함할 수 있으므로)\n        text = llm_output.strip()\n        start = text.find('{')\n\
+          \        end = text.rfind('}') + 1\n        if start >= 0 and end > start:\n\
+          \            result = json.loads(text[start:end])\n        else:\n     \
+          \       result = {}\n        return {\n            \"complexity\": result.get(\"\
+          complexity\", \"high\"),\n            \"category\": result.get(\"category\"\
+          , \"기타\")\n        }\n    except (json.JSONDecodeError, Exception):\n  \
+          \      return {\n            \"complexity\": \"high\",\n            \"category\"\
+          : \"기타\"\n        }\n"
+        code_language: python3
+        desc: LLM 분류 결과 JSON을 파싱하여 complexity, category 변수로 분리
+        outputs:
+          category:
+            children: null
+            type: string
+          complexity:
+            children: null
+            type: string
+        selected: false
+        title: JSON 파싱
+        type: code
+        variables:
+        - value_selector:
+          - '2'
+          - text
+          variable: llm_output
+      height: 120
+      id: '3'
+      position:
+        x: 638
+        y: 300
+      positionAbsolute:
+        x: 638
+        y: 300
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        code: "# [MOCK] FAQ 지식베이스 검색 + 관련도 평가 재검색 루프\n# 원래 기능: 고객 질문을 FAQ 지식베이스에서\
+          \ 의미 검색하여 관련 답변과 관련도 점수를 반환\n# 확장: 검색 결과의 관련도/정확도를 평가 -> 90점 미만 시 질문 수정\
+          \ -> 재검색 (최대 3회)\n# 전략: 입력 해시 기반 자동 변형 + 관련도 평가 루프\nimport json\n\ndef evaluate_relevance(query,\
+          \ results, top_score):\n    \"\"\"검색 결과 관련도 평가 (0-100). 실제 구현: LLM 평가 노드로\
+          \ 대체\"\"\"\n    if not results or top_score == 0:\n        return 0\n  \
+          \  score = top_score\n    if len(results) > 1:\n        score = min(100,\
+          \ score + 5)\n    return score\n\ndef refine_query(query, attempt):\n  \
+          \  \"\"\"질문 프롬프트 수정. 실제 구현: LLM 재작성 노드로 대체\"\"\"\n    refinements = [\"\
+          구체적으로\", \"자세히 알려주세요\", \"단계별로\"]\n    idx = min(attempt - 1, len(refinements)\
+          \ - 1)\n    return query + \" \" + refinements[idx]\n\ndef search_faq(query,\
+          \ category):\n    \"\"\"MOCK FAQ 검색 - 해시 전략\"\"\"\n    variant = sum(ord(c)\
+          \ for c in query) % 3\n    if variant == 0:\n        return {\n        \
+          \    \"results\": [{\"title\": \"FAQ-\" + category + \"-001\", \"content\"\
+          : \"해당 제품의 사용 방법은 다음과 같습니다. 1) 전원 버튼을 3초간 누릅니다. 2) LED가 점멸하면 연결 준비 완료입니다.\
+          \ 3) 기기와 페어링하세요.\", \"score\": 88}, {\"title\": \"FAQ-\" + category + \"\
+          -002\", \"content\": \"추가 도움이 필요하시면 사용 설명서 12페이지를 참고해 주세요.\", \"score\"\
+          : 76}],\n            \"top_score\": 88,\n            \"count\": 2\n    \
+          \    }\n    elif variant == 1:\n        return {\"results\": [], \"top_score\"\
+          : 0, \"count\": 0}\n    else:\n        return {\n            \"results\"\
+          : [{\"title\": \"FAQ-일반-099\", \"content\": \"죄송합니다. 관련 FAQ를 찾을 수 없습니다.\"\
+          , \"score\": 35}],\n            \"top_score\": 35,\n            \"count\"\
+          : 1\n        }\n\ndef main(query: str, category: str) -> dict:\n    max_attempts\
+          \ = 3\n    current_query = query\n    attempts_log = []\n    best_result\
+          \ = None\n    best_score = 0\n\n    for attempt in range(1, max_attempts\
+          \ + 1):\n        sr = search_faq(current_query, category)\n        results\
+          \ = sr[\"results\"]\n        top_score = sr[\"top_score\"]\n        relevance\
+          \ = evaluate_relevance(current_query, results, top_score)\n\n        attempts_log.append({\"\
+          attempt\": attempt, \"query\": current_query, \"relevance\": relevance,\
+          \ \"top_score\": top_score, \"count\": sr[\"count\"]})\n\n        if relevance\
+          \ > best_score:\n            best_result = sr\n            best_score =\
+          \ relevance\n\n        if relevance >= 90:\n            break\n        if\
+          \ attempt < max_attempts:\n            current_query = refine_query(query,\
+          \ attempt)\n\n    final = best_result if best_result else sr\n    return\
+          \ {\n        \"result\": json.dumps(final[\"results\"], ensure_ascii=False)\
+          \ if final[\"results\"] else \"[]\",\n        \"top_score\": final[\"top_score\"\
+          ],\n        \"count\": final[\"count\"],\n        \"search_attempts\": attempt,\n\
+          \        \"evaluation_log\": json.dumps(attempts_log, ensure_ascii=False)\n\
+          \    }\n"
+        code_language: python3
+        desc: '[MOCK] FAQ 지식베이스 검색 + 관련도 평가 재검색 루프 (최대 3회) - 90점 미만 시 질문 수정 후 재검색'
+        outputs:
+          count:
+            children: null
+            type: number
+          evaluation_log:
+            children: null
+            type: string
+          result:
+            children: null
+            type: string
+          search_attempts:
+            children: null
+            type: number
+          top_score:
+            children: null
+            type: number
+        selected: false
+        title: '[MOCK] FAQ 검색 + 관련도 평가'
+        type: code
+        variables:
+        - value_selector:
+          - sys
+          - query
+          variable: query
+        - value_selector:
+          - '3'
+          - category
+          variable: category
+      height: 120
+      id: '4'
+      position:
+        x: 942
+        y: 300
+      positionAbsolute:
+        x: 942
+        y: 300
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: ≥
+            id: cond-score
+            value: '75'
+            varType: number
+            variable_selector:
+            - '4'
+            - top_score
+          - comparison_operator: is
+            id: cond-complexity
+            value: low
+            variable_selector:
+            - '3'
+            - complexity
+          id: 'true'
+          logical_operator: and
+        desc: FAQ 검색 관련도 75점 이상 AND 복잡도 낮음이면 자동 처리, 그 외 상담원 이관
+        selected: false
+        title: 자동처리 가능 여부
+        type: if-else
+      height: 150
+      id: '5'
+      position:
+        x: 1246
+        y: 300
+      positionAbsolute:
+        x: 1246
+        y: 300
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: FAQ 검색 결과를 기반으로 고객에게 제공할 자동 답변을 생성
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 5
+        model:
+          completion_params:
+            max_tokens: 512
+            temperature: 0.1
+          mode: chat
+          name: meta-llama/llama-4-scout-17b-16e-instruct
+          provider: langgenius/groq/groq
+        prompt_template:
+        - id: system-prompt
+          role: system
+          text: '당신은 비용 효율을 최우선으로 하는 고객센터 자동 응답 에이전트입니다.
+
+
+            ## 행동 규칙
+
+            - 정중하고 간결한 존댓말을 사용하세요.
+
+            - 200자 이내로 핵심 답변만 제공하세요.
+
+            - 불필요한 안부 인사나 감사 표현을 하지 마세요.
+
+            - FAQ 검색 결과에 없는 내용은 추측하여 답변하지 마세요.
+
+            - 검색 결과의 내용을 바탕으로 고객 질문에 직접 답변하세요.
+
+
+            ## FAQ 검색 결과
+
+            {{#4.result#}}
+
+            '
+        - id: user-prompt
+          role: user
+          text: '{{#sys.query#}}
+
+            '
+        selected: false
+        title: 자동 답변 생성
+        type: llm
+        vision:
+          enabled: false
+      height: 150
+      id: '6'
+      position:
+        x: 1550
+        y: 200
+      positionAbsolute:
+        x: 1550
+        y: 200
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        code: "# [MOCK] 처리 건수 및 비용 집계 - 프리셋 전략\n# 원래 기능: 자동 처리 1건 완료 시 절감 비용을 계산하고\
+          \ 누적 집계에 반영\n# 전략: 표준 글로벌 프리셋 4종 (default, empty, error, timeout)\nimport\
+          \ json\n\ndef main(category: str, mock_preset: str, mock_override: str)\
+          \ -> dict:\n    presets = {\n        \"default\": {\n            \"saved_cost\"\
+          : 28000,\n            \"auto_processed\": 1,\n            \"total_saved_today\"\
+          : 1960000,\n            \"total_auto_today\": 70,\n            \"cost_note\"\
+          : \"자동 처리 1건 절감액: 28,000원 (상담원 1건 처리 비용 기준)\"\n        },\n        \"empty\"\
+          : {\n            \"saved_cost\": 0,\n            \"auto_processed\": 0,\n\
+          \            \"total_saved_today\": 0,\n            \"total_auto_today\"\
+          : 0,\n            \"cost_note\": \"\",\n            \"_mock_note\": \"집계\
+          \ 데이터 없음\"\n        },\n        \"error\": {\n            \"saved_cost\"\
+          : 0,\n            \"auto_processed\": 0,\n            \"total_saved_today\"\
+          : 0,\n            \"total_auto_today\": 0,\n            \"cost_note\": \"\
+          \",\n            \"_mock_error\": \"집계 시스템 연결 실패\"\n        },\n       \
+          \ \"timeout\": {\n            \"saved_cost\": 0,\n            \"auto_processed\"\
+          : 0,\n            \"total_saved_today\": 0,\n            \"total_auto_today\"\
+          : 0,\n            \"cost_note\": \"\",\n            \"_mock_error\": \"\
+          집계 응답 시간 초과\"\n        }\n    }\n\n    if mock_override and mock_override.strip():\n\
+          \        try:\n            result = json.loads(mock_override)\n        except\
+          \ json.JSONDecodeError:\n            result = presets.get(\"default\")\n\
+          \    else:\n        result = presets.get(mock_preset, presets[\"default\"\
+          ])\n\n    result[\"category\"] = category\n    return {\n        \"saved_cost\"\
+          : result.get(\"saved_cost\", 0),\n        \"auto_processed\": result.get(\"\
+          auto_processed\", 0),\n        \"total_saved_today\": result.get(\"total_saved_today\"\
+          , 0),\n        \"total_auto_today\": result.get(\"total_auto_today\", 0),\n\
+          \        \"cost_note\": result.get(\"cost_note\", \"\")\n    }\n"
+        code_language: python3
+        desc: '[MOCK] 자동 처리 비용 절감 집계 (프리셋 전략) - 처리 1건당 절감 비용 계산 및 누적'
+        outputs:
+          auto_processed:
+            children: null
+            type: number
+          cost_note:
+            children: null
+            type: string
+          saved_cost:
+            children: null
+            type: number
+          total_auto_today:
+            children: null
+            type: number
+          total_saved_today:
+            children: null
+            type: number
+        selected: false
+        title: '[MOCK] 비용 절감 집계'
+        type: code
+        variables:
+        - value_selector:
+          - '3'
+          - category
+          variable: category
+        - value_selector:
+          - '1'
+          - mock_preset
+          variable: mock_preset
+        - value_selector:
+          - '1'
+          - mock_override
+          variable: mock_override
+      height: 120
+      id: '7'
+      position:
+        x: 1854
+        y: 200
+      positionAbsolute:
+        x: 1854
+        y: 200
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#6.text#}}
+
+
+          ---
+
+          _[자동 답변] 절감 비용: {{#7.cost_note#}} | 검색 {{#4.search_attempts#}}회 시도_
+
+          _[평가 로그] {{#4.evaluation_log#}}_'
+        desc: FAQ 기반 자동 답변을 고객에게 전달
+        selected: false
+        title: 자동 답변
+        type: answer
+        variables: []
+      height: 120
+      id: '8'
+      position:
+        x: 2158
+        y: 200
+      positionAbsolute:
+        x: 2158
+        y: 200
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        code: "# [MOCK] 상담원 대기열 관리 - 프리셋 전략\n# 원래 기능: 복잡도/긴급도 기반 상담원 배정 우선순위 결정 및\
+          \ 대기열 등록\n# 전략: 표준 글로벌 프리셋 4종 (default, empty, error, timeout)\nimport json\n\
+          \ndef main(category: str, complexity: str, mock_preset: str, mock_override:\
+          \ str) -> dict:\n    presets = {\n        \"default\": {\n            \"\
+          agent_id\": \"AGT-042\",\n            \"agent_name\": \"김상담\",\n       \
+          \     \"queue_position\": 2,\n            \"estimated_wait_minutes\": 5,\n\
+          \            \"priority\": \"normal\",\n            \"status\": \"queued\"\
+          \n        },\n        \"empty\": {\n            \"agent_id\": \"\",\n  \
+          \          \"agent_name\": \"\",\n            \"queue_position\": 0,\n \
+          \           \"estimated_wait_minutes\": 0,\n            \"priority\": \"\
+          \",\n            \"status\": \"no_agent_available\",\n            \"_mock_note\"\
+          : \"가용 상담원 없음\"\n        },\n        \"error\": {\n            \"agent_id\"\
+          : \"\",\n            \"agent_name\": \"\",\n            \"queue_position\"\
+          : 0,\n            \"estimated_wait_minutes\": 0,\n            \"priority\"\
+          : \"\",\n            \"status\": \"system_error\",\n            \"_mock_error\"\
+          : \"상담원 배정 시스템 연결 실패\"\n        },\n        \"timeout\": {\n           \
+          \ \"agent_id\": \"\",\n            \"agent_name\": \"\",\n            \"\
+          queue_position\": 0,\n            \"estimated_wait_minutes\": 0,\n     \
+          \       \"priority\": \"\",\n            \"status\": \"timeout\",\n    \
+          \        \"_mock_error\": \"배정 응답 시간 초과\"\n        }\n    }\n\n    if mock_override\
+          \ and mock_override.strip():\n        try:\n            result = json.loads(mock_override)\n\
+          \        except json.JSONDecodeError:\n            result = presets.get(\"\
+          default\")\n    else:\n        result = presets.get(mock_preset, presets[\"\
+          default\"])\n\n    # 복잡도에 따른 우선순위 조정\n    if complexity == \"high\" and\
+          \ result.get(\"priority\") == \"normal\":\n        result[\"priority\"]\
+          \ = \"high\"\n        if result.get(\"estimated_wait_minutes\", 0) > 0:\n\
+          \            result[\"estimated_wait_minutes\"] = max(1, result[\"estimated_wait_minutes\"\
+          ] - 2)\n\n    result[\"category\"] = category\n    result[\"complexity\"\
+          ] = complexity\n    return {\n        \"agent_id\": result.get(\"agent_id\"\
+          , \"\"),\n        \"agent_name\": result.get(\"agent_name\", \"\"),\n  \
+          \      \"queue_position\": result.get(\"queue_position\", 0),\n        \"\
+          estimated_wait_minutes\": result.get(\"estimated_wait_minutes\", 0),\n \
+          \       \"priority\": result.get(\"priority\", \"\"),\n        \"status\"\
+          : result.get(\"status\", \"\")\n    }\n"
+        code_language: python3
+        desc: '[MOCK] 상담원 대기열 배정 (프리셋 전략) - 복잡도/긴급도 기반 상담원 배정 및 대기열 등록'
+        outputs:
+          agent_id:
+            children: null
+            type: string
+          agent_name:
+            children: null
+            type: string
+          estimated_wait_minutes:
+            children: null
+            type: number
+          priority:
+            children: null
+            type: string
+          queue_position:
+            children: null
+            type: number
+          status:
+            children: null
+            type: string
+        selected: false
+        title: '[MOCK] 상담원 배정'
+        type: code
+        variables:
+        - value_selector:
+          - '3'
+          - category
+          variable: category
+        - value_selector:
+          - '3'
+          - complexity
+          variable: complexity
+        - value_selector:
+          - '1'
+          - mock_preset
+          variable: mock_preset
+        - value_selector:
+          - '1'
+          - mock_override
+          variable: mock_override
+      height: 120
+      id: '9'
+      position:
+        x: 1550
+        y: 450
+      positionAbsolute:
+        x: 1550
+        y: 450
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        answer: '해당 문의는 전문 상담원의 도움이 필요합니다.
+
+
+          상담원 연결까지 약 {{#9.estimated_wait_minutes#}}분 소요 예정입니다.
+
+          대기 순서: {{#9.queue_position#}}번째
+
+
+          잠시만 기다려 주시면 {{#9.agent_name#}} 상담원이 도와드리겠습니다.
+
+          '
+        desc: 상담원 이관 안내 메시지를 고객에게 전달
+        selected: false
+        title: 상담원 이관 안내
+        type: answer
+        variables: []
+      height: 120
+      id: '10'
+      position:
+        x: 1854
+        y: 450
+      positionAbsolute:
+        x: 1854
+        y: 450
+      selected: false
+      type: custom
+      width: 242
+    viewport:
+      x: 0
+      y: 0
+      zoom: 0.8
+  rag_pipeline_variables: []
