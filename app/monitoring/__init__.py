@@ -1,1 +1,1 @@
-"""모니터링 모듈."""
+"""Monitoring module."""

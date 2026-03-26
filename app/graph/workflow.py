@@ -1,84 +1,89 @@
-"""LangGraph 워크플로우 그래프 조립.
+"""LangGraph workflow assembly."""
 
-DSL의 노드/엣지 구조를 LangGraph StateGraph로 매핑하여
-전체 워크플로우를 조립함.
+from typing import Any
 
-그래프 구조:
-  START → classifier → json_parser → faq_search → decider
-    → (auto) answer_gen → cost_agg → auto_output → END
-    → (escalation) agent_assign → escalation → END
-"""
+from langgraph.graph import StateGraph, START, END
 
-from __future__ import annotations
-
-from langgraph.graph import END, StateGraph
-
-from app.graph.nodes.agent_assign import assign_agent
-from app.graph.nodes.answer_gen import generate_answer
-from app.graph.nodes.auto_output import format_auto_answer
-from app.graph.nodes.classifier import classify_question
-from app.graph.nodes.cost_agg import aggregate_cost
-from app.graph.nodes.decider import decide_auto_process, route_decision
-from app.graph.nodes.escalation import format_escalation
-from app.graph.nodes.faq_search import search_faq
-from app.graph.nodes.json_parser import parse_classification
 from app.graph.state import AgentState
+from app.graph.nodes.classifier import classify_question
+from app.graph.nodes.json_parser import parse_json
+from app.graph.nodes.faq_search import search_faq
+from app.graph.nodes.decider import decide_auto_process
+from app.graph.nodes.answer_gen import generate_answer
+from app.graph.nodes.cost_agg import aggregate_cost
+from app.graph.nodes.agent_assign import assign_agent
+from app.core.logger import get_logger
+
+logger = get_logger(__name__)
 
 
-def build_workflow() -> StateGraph:
-    """워크플로우 그래프를 조립하여 반환함.
+def create_workflow():
+    """Create and compile the LangGraph workflow."""
+    workflow = StateGraph(AgentState)
 
-    Returns:
-        컴파일된 LangGraph StateGraph
-    """
-    graph = StateGraph(AgentState)
+    # Node 1: Input Parser (implicit in API layer)
+    # Node 2: Question Classification
+    def node_classify(state: AgentState) -> dict[str, Any]:
+        result = classify_question(state)
+        return result
 
-    # 노드 등록
-    graph.add_node("classifier", classify_question)
-    graph.add_node("json_parser", parse_classification)
-    graph.add_node("faq_search", search_faq)
-    graph.add_node("decider", decide_auto_process)
-    graph.add_node("answer_gen", generate_answer)
-    graph.add_node("cost_agg", aggregate_cost)
-    graph.add_node("auto_output", format_auto_answer)
-    graph.add_node("agent_assign", assign_agent)
-    graph.add_node("escalation", format_escalation)
+    # Node 3: JSON Parser
+    def node_parse_json(state: AgentState) -> dict[str, Any]:
+        return parse_json(state, state.llm_output)
 
-    # 엣지 연결 (무조건)
-    graph.set_entry_point("classifier")
-    graph.add_edge("classifier", "json_parser")
-    graph.add_edge("json_parser", "faq_search")
-    graph.add_edge("faq_search", "decider")
+    # Node 4: FAQ Search
+    def node_faq_search(state: AgentState) -> dict[str, Any]:
+        return search_faq(state)
 
-    # 조건부 엣지 (Node 5: 자동처리 가능 여부)
-    graph.add_conditional_edges(
-        "decider",
-        route_decision,
-        {
-            "auto": "answer_gen",
-            "escalation": "agent_assign",
-        },
-    )
+    # Node 5: Auto-process Decision
+    def node_decide(state: AgentState) -> dict[str, Any]:
+        return decide_auto_process(state)
 
-    # 자동 답변 경로
-    graph.add_edge("answer_gen", "cost_agg")
-    graph.add_edge("cost_agg", "auto_output")
-    graph.add_edge("auto_output", END)
+    # Node 6: Answer Generation
+    def node_answer_gen(state: AgentState) -> dict[str, Any]:
+        result = generate_answer(state)
+        return result
 
-    # 상담원 이관 경로
-    graph.add_edge("agent_assign", "escalation")
-    graph.add_edge("escalation", END)
+    # Node 7: Cost Aggregation
+    def node_cost_agg(state: AgentState) -> dict[str, Any]:
+        return aggregate_cost(state)
 
-    return graph.compile()
+    # Node 8: Auto Answer Output (implicit in API layer)
+    # Node 9: Agent Assignment
+    def node_agent_assign(state: AgentState) -> dict[str, Any]:
+        return assign_agent(state)
 
+    # Node 10: Escalation Output (implicit in API layer)
 
-# 싱글톤 인스턴스
-_workflow_instance = None
+    # Add nodes
+    workflow.add_node("classify", node_classify)
+    workflow.add_node("parse_json", node_parse_json)
+    workflow.add_node("faq_search", node_faq_search)
+    workflow.add_node("decide", node_decide)
+    workflow.add_node("answer_gen", node_answer_gen)
+    workflow.add_node("cost_agg", node_cost_agg)
+    workflow.add_node("agent_assign", node_agent_assign)
 
+    # Add edges
+    workflow.add_edge(START, "classify")
+    workflow.add_edge("classify", "parse_json")
+    workflow.add_edge("parse_json", "faq_search")
+    workflow.add_edge("faq_search", "decide")
 
-def get_workflow() -> StateGraph:
-    """워크플로우 싱글톤 인스턴스를 반환함."""
-    global _workflow_instance
-    if _workflow_instance is None:
-        _workflow_instance = build_workflow()
-    return _workflow_instance
+    # Conditional edge: auto_processable
+    def should_auto_process(state: AgentState) -> str:
+        return "answer_gen" if state.auto_processable else "agent_assign"
+
+    workflow.add_conditional_edges("decide", should_auto_process)
+
+    # Auto-process path
+    workflow.add_edge("answer_gen", "cost_agg")
+    workflow.add_edge("cost_agg", END)
+
+    # Escalation path
+    workflow.add_edge("agent_assign", END)
+
+    # Compile workflow
+    app = workflow.compile()
+    logger.info("Workflow compiled successfully")
+    return app

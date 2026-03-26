@@ -1,68 +1,34 @@
-"""Node 5: 자동처리 가능 여부 판단.
+"""Node 5: Auto-processing decision logic."""
 
-FAQ 검색 관련도 75점 이상 AND 복잡도 낮음이면 자동 처리,
-그 외 상담원 이관으로 라우팅함.
-DSL Node 5 (자동처리 가능 여부)에 대응.
-"""
-
-from __future__ import annotations
-
-import structlog
+from typing import Any
 
 from app.config.settings import get_settings
+from app.core.logger import get_logger
 from app.graph.state import AgentState
+from app.monitoring.metrics import auto_processed_total, escalation_total
 
-logger = structlog.get_logger()
+logger = get_logger(__name__)
+settings = get_settings()
 
 
-def decide_auto_process(state: AgentState) -> AgentState:
-    """자동처리 가능 여부를 판단함.
-
-    조건: top_score >= faq_score_threshold AND complexity == "low"
-
-    Args:
-        state: 현재 워크플로우 상태
-
-    Returns:
-        auto_processable, process_type 필드가 업데이트된 상태
-    """
-    settings = get_settings()
-    top_score = state.get("top_score", 0.0)
-    complexity = state.get("complexity", "high")
-    threshold = settings.faq_score_threshold
-
-    # complexity 판단은 LLM 모델 성능에 의존적이므로
-    # top_score가 충분히 높으면 (>= threshold) 자동 처리 허용
-    auto_processable = top_score >= threshold
-
-    process_type = "auto" if auto_processable else "escalation"
-
-    logger.info(
-        "자동처리 판단 완료",
-        top_score=top_score,
-        complexity=complexity,
-        threshold=threshold,
-        auto_processable=auto_processable,
-        process_type=process_type,
+def decide_auto_process(state: AgentState) -> dict[str, Any]:
+    """Decide whether auto-processing is possible based on score and complexity."""
+    can_auto_process = (
+        state.top_score >= settings.faq_score_threshold and state.complexity == "low"
     )
 
-    return {
-        "auto_processable": auto_processable,
-        "process_type": process_type,
-    }
+    logger.info(
+        "Auto-process decision made",
+        can_auto_process=can_auto_process,
+        top_score=state.top_score,
+        complexity=state.complexity,
+        threshold=settings.faq_score_threshold,
+    )
 
+    category = state.category or "unknown"
+    if can_auto_process:
+        auto_processed_total.labels(category=category).inc()
+    else:
+        escalation_total.labels(category=category).inc()
 
-def route_decision(state: AgentState) -> str:
-    """조건부 엣지 라우팅 함수.
-
-    LangGraph의 conditional_edges에서 사용됨.
-
-    Args:
-        state: 현재 워크플로우 상태
-
-    Returns:
-        "auto" 또는 "escalation" 문자열
-    """
-    if state.get("auto_processable", False):
-        return "auto"
-    return "escalation"
+    return {"auto_processable": can_auto_process}

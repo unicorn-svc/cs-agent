@@ -1,131 +1,142 @@
-"""Node 4: FAQ 검색 + 관련도 평가.
-
-FAQ 지식베이스에서 의미 검색 후 관련도 평가를 수행함.
-90점 미만 시 질문을 수정하여 재검색 (최대 3회).
-DSL Node 4에 대응. Mock/Real 전환 가능.
-"""
-
-from __future__ import annotations
+"""Node 4: FAQ search with relevance evaluation loop."""
 
 import json
+import time
+from typing import Any
 
-import structlog
-
+from app.core.logger import get_logger
 from app.config.settings import get_settings
 from app.graph.state import AgentState
-from app.tools.faq_kb import FAQKnowledgeBase, MockFAQKnowledgeBase
+from app.monitoring.metrics import faq_search_duration_seconds
 
-logger = structlog.get_logger()
+logger = get_logger(__name__)
+settings = get_settings()
 
 
-def _evaluate_relevance(
-    query: str,
-    results: list[dict],
-    top_score: float,
-) -> float:
-    """검색 결과 관련도 평가 (0-100).
-
-    실제 구현에서는 LLM 평가 노드로 대체 가능.
-    """
+def evaluate_relevance(query: str, results: list, top_score: float) -> float:
+    """Evaluate relevance of search results (0-100)."""
     if not results or top_score == 0:
         return 0.0
-    score = top_score
+
+    score = float(top_score)
     if len(results) > 1:
         score = min(100.0, score + 5.0)
+
     return score
 
 
-def _refine_query(original_query: str, attempt: int) -> str:
-    """질문 프롬프트 수정. 실제 구현에서는 LLM 재작성 노드로 대체 가능."""
+def refine_query(query: str, attempt: int) -> str:
+    """Refine question for re-search."""
     refinements = ["구체적으로", "자세히 알려주세요", "단계별로"]
     idx = min(attempt - 1, len(refinements) - 1)
-    return original_query + " " + refinements[idx]
+    return query + " " + refinements[idx]
 
 
-def search_faq(state: AgentState) -> AgentState:
-    """FAQ 검색 + 관련도 평가 루프를 실행함.
+def search_faq_mock(query: str, category: str) -> dict[str, Any]:
+    """Mock FAQ search - returns deterministic results based on hash."""
+    variant = sum(ord(c) for c in query) % 3
 
-    최대 max_search_attempts 회 반복하며, 관련도 90점 이상이면 즉시 반환함.
-
-    Args:
-        state: 현재 워크플로우 상태
-
-    Returns:
-        faq_results, top_score, search_attempts, evaluation_log 업데이트된 상태
-    """
-    settings = get_settings()
-    query = state.get("query", "")
-    category = state.get("category", "기타")
-    max_attempts = settings.max_search_attempts
-    relevance_threshold = settings.faq_relevance_threshold
-
-    # Mock/Real 전환
-    if settings.use_mock:
-        mock_preset = state.get("mock_preset", "default")
-        mock_override = state.get("mock_override", "")
-        kb: FAQKnowledgeBase = MockFAQKnowledgeBase(
-            preset=mock_preset,
-            override=mock_override,
-        )
+    if variant == 0:
+        return {
+            "results": [
+                {
+                    "title": f"FAQ-{category}-001",
+                    "content": "해당 제품의 사용 방법은 다음과 같습니다. 1) 전원 버튼을 3초간 누릅니다. 2) LED가 점멸하면 연결 준비 완료입니다. 3) 기기와 페어링하세요.",
+                    "score": 88,
+                },
+                {
+                    "title": f"FAQ-{category}-002",
+                    "content": "추가 도움이 필요하시면 사용 설명서 12페이지를 참고해 주세요.",
+                    "score": 76,
+                },
+            ],
+            "top_score": 88,
+            "count": 2,
+        }
+    elif variant == 1:
+        return {"results": [], "top_score": 0, "count": 0}
     else:
-        kb = FAQKnowledgeBase(settings=settings)
+        return {
+            "results": [
+                {
+                    "title": "FAQ-일반-099",
+                    "content": "죄송합니다. 관련 FAQ를 찾을 수 없습니다.",
+                    "score": 35,
+                }
+            ],
+            "top_score": 35,
+            "count": 1,
+        }
 
-    logger.info(
-        "FAQ 검색 시작",
-        query=query[:50],
-        category=category,
-        use_mock=settings.use_mock,
-    )
 
-    current_query = query
-    attempts_log: list[dict] = []
-    best_result: dict | None = None
-    best_score: float = 0.0
-    attempt = 0
+def search_faq(state: AgentState | dict) -> dict[str, Any]:
+    """Search FAQ with relevance evaluation loop (max 3 attempts)."""
+    try:
+        if isinstance(state, dict):
+            state = AgentState(**state)
+        max_attempts = settings.max_search_attempts
+        current_query = state.query
+        attempts_log = []
+        best_result = None
+        best_score = 0.0
+        search_start = time.monotonic()
 
-    for attempt in range(1, max_attempts + 1):
-        sr = kb.search(current_query, category)
-        results = sr.get("results", [])
-        top_score = sr.get("top_score", 0.0)
-        count = sr.get("count", 0)
+        for attempt in range(1, max_attempts + 1):
+            if state.mock_preset == "empty":
+                sr = {"results": [], "top_score": 0, "count": 0}
+            elif state.mock_override:
+                sr = json.loads(state.mock_override)
+            else:
+                sr = search_faq_mock(current_query, state.category)
+            results = sr["results"]
+            top_score = sr["top_score"]
+            relevance = evaluate_relevance(current_query, results, top_score)
 
-        relevance = _evaluate_relevance(current_query, results, top_score)
+            attempts_log.append({
+                "attempt": attempt,
+                "query": current_query,
+                "relevance": relevance,
+                "top_score": top_score,
+                "count": sr["count"],
+            })
 
-        attempts_log.append({
-            "attempt": attempt,
-            "query": current_query,
-            "relevance": relevance,
-            "top_score": top_score,
-            "count": count,
-        })
+            if relevance > best_score:
+                best_result = sr
+                best_score = relevance
 
-        if relevance > best_score:
-            best_result = sr
-            best_score = relevance
+            if relevance >= settings.faq_relevance_threshold:
+                break
+
+            if attempt < max_attempts:
+                current_query = refine_query(state.query, attempt)
+
+        final = best_result if best_result else sr
+        result_json = json.dumps(final["results"], ensure_ascii=False) if final["results"] else "[]"
+
+        search_elapsed = time.monotonic() - search_start
+        faq_search_duration_seconds.observe(search_elapsed)
 
         logger.info(
-            "FAQ 검색 시도",
-            attempt=attempt,
-            relevance=relevance,
-            top_score=top_score,
-            count=count,
+            "FAQ search completed",
+            attempts=attempt,
+            top_score=final["top_score"],
+            count=final["count"],
+            elapsed_seconds=round(search_elapsed, 4),
         )
 
-        if relevance >= relevance_threshold:
-            break
+        return {
+            "faq_results": result_json,
+            "faq_count": final["count"],
+            "top_score": final["top_score"],
+            "search_attempts": attempt,
+            "evaluation_log": json.dumps(attempts_log, ensure_ascii=False),
+        }
 
-        if attempt < max_attempts:
-            current_query = _refine_query(query, attempt)
-
-    final = best_result if best_result else sr
-    final_results = final.get("results", [])
-
-    return {
-        "faq_results": json.dumps(final_results, ensure_ascii=False)
-        if final_results
-        else "[]",
-        "top_score": final.get("top_score", 0.0),
-        "faq_count": final.get("count", 0),
-        "search_attempts": attempt,
-        "evaluation_log": json.dumps(attempts_log, ensure_ascii=False),
-    }
+    except Exception as e:
+        logger.error("FAQ search failed", error=str(e))
+        return {
+            "faq_results": "[]",
+            "top_score": 0.0,
+            "search_attempts": 1,
+            "evaluation_log": "[]",
+        }

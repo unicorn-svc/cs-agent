@@ -1,58 +1,78 @@
-"""Node 9: 상담원 배정.
+"""Node 9: Agent assignment based on complexity and priority."""
 
-복잡도/긴급도 기반 상담원 배정 우선순위 결정 및 대기열 등록.
-DSL Node 9에 대응. Mock/Real 전환 가능.
-"""
+import json
+from typing import Any
 
-from __future__ import annotations
-
-import structlog
-
-from app.config.settings import get_settings
+from app.core.logger import get_logger
 from app.graph.state import AgentState
-from app.tools.agent_queue import AgentQueue, MockAgentQueue
 
-logger = structlog.get_logger()
+logger = get_logger(__name__)
 
 
-def assign_agent(state: AgentState) -> AgentState:
-    """상담원을 배정하고 대기열에 등록함.
-
-    Args:
-        state: 현재 워크플로우 상태
-
-    Returns:
-        agent_id, agent_name, queue_position 등 배정 관련 필드 업데이트된 상태
-    """
-    settings = get_settings()
-    category = state.get("category", "기타")
-    complexity = state.get("complexity", "high")
-    mock_preset = state.get("mock_preset", "default")
-    mock_override = state.get("mock_override", "")
-
-    logger.info(
-        "상담원 배정 시작",
-        category=category,
-        complexity=complexity,
-        use_mock=settings.use_mock,
-    )
-
+def assign_agent(state: AgentState) -> dict[str, Any]:
+    """Assign agent based on complexity and create queue entry."""
     try:
-        if settings.use_mock:
-            queue: AgentQueue = MockAgentQueue(
-                preset=mock_preset,
-                override=mock_override,
-            )
-        else:
-            queue = AgentQueue(settings=settings)
+        # Mock agent assignment with presets
+        presets = {
+            "default": {
+                "agent_id": "AGT-042",
+                "agent_name": "김상담",
+                "queue_position": 2,
+                "estimated_wait_minutes": 5,
+                "priority": "normal",
+                "status": "queued",
+            },
+            "empty": {
+                "agent_id": "",
+                "agent_name": "",
+                "queue_position": 0,
+                "estimated_wait_minutes": 0,
+                "priority": "",
+                "status": "no_agent_available",
+                "_mock_note": "가용 상담원 없음",
+            },
+            "error": {
+                "agent_id": "",
+                "agent_name": "",
+                "queue_position": 0,
+                "estimated_wait_minutes": 0,
+                "priority": "",
+                "status": "system_error",
+                "_mock_error": "상담원 배정 시스템 연결 실패",
+            },
+            "timeout": {
+                "agent_id": "",
+                "agent_name": "",
+                "queue_position": 0,
+                "estimated_wait_minutes": 0,
+                "priority": "",
+                "status": "timeout",
+                "_mock_error": "배정 응답 시간 초과",
+            },
+        }
 
-        result = queue.assign(category=category, complexity=complexity)
+        if state.mock_override and state.mock_override.strip():
+            try:
+                result = json.loads(state.mock_override)
+            except json.JSONDecodeError:
+                result = presets.get("default", presets["default"])
+        else:
+            result = presets.get(state.mock_preset, presets["default"])
+
+        # Adjust priority based on complexity
+        if state.complexity == "high" and result.get("priority") == "normal":
+            result["priority"] = "high"
+            if result.get("estimated_wait_minutes", 0) > 0:
+                result["estimated_wait_minutes"] = max(1, result["estimated_wait_minutes"] - 2)
+
+        result["category"] = state.category
+        result["complexity"] = state.complexity
 
         logger.info(
-            "상담원 배정 완료",
-            agent_id=result.get("agent_id", ""),
-            status=result.get("status", ""),
-            priority=result.get("priority", ""),
+            "Agent assigned",
+            agent_id=result.get("agent_id"),
+            queue_position=result.get("queue_position"),
+            priority=result.get("priority"),
         )
 
         return {
@@ -61,17 +81,14 @@ def assign_agent(state: AgentState) -> AgentState:
             "queue_position": result.get("queue_position", 0),
             "estimated_wait_minutes": result.get("estimated_wait_minutes", 0),
             "priority": result.get("priority", ""),
-            "assign_status": result.get("status", ""),
         }
 
     except Exception as e:
-        logger.error("상담원 배정 실패", error=str(e))
+        logger.error("Agent assignment failed", error=str(e))
         return {
             "agent_id": "",
             "agent_name": "",
             "queue_position": 0,
             "estimated_wait_minutes": 0,
-            "priority": "",
-            "assign_status": "system_error",
-            "error": f"상담원 배정 실패: {str(e)}",
+            "priority": "normal",
         }

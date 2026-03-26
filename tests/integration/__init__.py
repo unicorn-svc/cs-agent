@@ -1,1 +1,1 @@
-"""통합 테스트 패키지."""
+"""Integration tests."""

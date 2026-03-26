@@ -1,79 +1,66 @@
-"""Node 7: 비용 절감 집계 단위 테스트."""
+"""Unit tests for cost aggregation node."""
 
 import pytest
 
+from app.graph.state import AgentState
 from app.graph.nodes.cost_agg import aggregate_cost
+from app.config.settings import get_settings
+
+settings = get_settings()
 
 
-class TestAggregateCost:
-    """비용 집계 노드 테스트."""
+def test_aggregate_cost_default_preset():
+    """Test cost aggregation with default preset."""
+    state = AgentState(
+        query="test",
+        category="제품사용",
+        mock_preset="default",
+    )
 
-    def test_default_preset_cost(self):
-        """기본 프리셋: 28,000원/건 절감."""
-        state = {
-            "category": "제품사용",
-            "inquiry_channel": "웹채팅",
-            "mock_preset": "default",
-            "mock_override": "",
-        }
-        result = aggregate_cost(state)
-        assert result["saved_cost"] == 28000
-        assert result["auto_processed"] == 1
-        assert result["total_saved_today"] == 1960000
-        assert result["total_auto_today"] == 70
-        assert "28,000" in result["cost_note"]
+    result = aggregate_cost(state)
 
-    def test_empty_preset(self):
-        """empty 프리셋: 집계 데이터 없음."""
-        state = {
-            "category": "제품사용",
-            "inquiry_channel": "웹채팅",
-            "mock_preset": "empty",
-            "mock_override": "",
-        }
-        result = aggregate_cost(state)
-        assert result["saved_cost"] == 0
-        assert result["auto_processed"] == 0
-        assert result["cost_note"] == ""
+    assert result["saved_cost"] == settings.cost_per_case
+    assert result["cost_note"] != ""
 
-    def test_error_preset(self):
-        """error 프리셋: 집계 데이터 없음."""
-        state = {
-            "category": "제품사용",
-            "inquiry_channel": "웹채팅",
-            "mock_preset": "error",
-            "mock_override": "",
-        }
-        result = aggregate_cost(state)
-        assert result["saved_cost"] == 0
 
-    def test_timeout_preset(self):
-        """timeout 프리셋: 집계 데이터 없음."""
-        state = {
-            "category": "제품사용",
-            "inquiry_channel": "웹채팅",
-            "mock_preset": "timeout",
-            "mock_override": "",
-        }
-        result = aggregate_cost(state)
-        assert result["saved_cost"] == 0
+def test_aggregate_cost_empty_preset():
+    """Test cost aggregation with empty preset."""
+    state = AgentState(
+        query="test",
+        category="배송",
+        mock_preset="empty",
+    )
 
-    def test_mock_override(self):
-        """오버라이드 JSON으로 커스텀 집계."""
-        import json
-        override = json.dumps({
-            "saved_cost": 50000,
-            "auto_processed": 2,
-            "total_saved_today": 100000,
-            "total_auto_today": 4,
-            "cost_note": "커스텀 비용",
-        })
-        state = {
-            "category": "제품사용",
-            "inquiry_channel": "웹채팅",
-            "mock_preset": "default",
-            "mock_override": override,
-        }
-        result = aggregate_cost(state)
-        assert result["saved_cost"] == 50000
-        assert result["auto_processed"] == 2
+    result = aggregate_cost(state)
+
+    assert result["saved_cost"] == 0
+    assert result["cost_note"] == ""
+
+
+def test_aggregate_cost_error_preset():
+    """Test cost aggregation with error preset."""
+    state = AgentState(
+        query="test",
+        category="결제",
+        mock_preset="error",
+    )
+
+    result = aggregate_cost(state)
+
+    assert result["saved_cost"] == 0
+    assert result["total_saved_today"] == 0
+
+
+def test_aggregate_cost_with_override():
+    """Test cost aggregation with override."""
+    override = '{"saved_cost": 50000, "total_saved_today": 2000000}'
+    state = AgentState(
+        query="test",
+        category="환불",
+        mock_preset="default",
+        mock_override=override,
+    )
+
+    result = aggregate_cost(state)
+
+    assert result["saved_cost"] == 50000

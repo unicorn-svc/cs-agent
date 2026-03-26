@@ -107,4 +107,4 @@ SKILL.md 또는 대화에서 아래 키워드가 나오면 **반드시 Skill 도
 | `ulw` | `Skill("oh-my-claudecode:ultrawork")` |
 
 ## ABRA_PLUGIN_DIR
-{ABRA_PLUGIN_DIR}=C:/Users/hiond/.claude/plugins/cache/abra/abra/1.1.5
+{ABRA_PLUGIN_DIR}=~/workspace/abra

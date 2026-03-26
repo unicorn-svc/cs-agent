@@ -1,1 +1,1 @@
-"""환경 설정 모듈."""
+"""Configuration module."""

@@ -1,126 +1,75 @@
-"""Node 6: 자동 답변 생성 (LLM).
-
-FAQ 검색 결과를 기반으로 고객에게 제공할 자동 답변을 생성함.
-DSL Node 6 (자동 답변 생성)에 대응.
-"""
-
-from __future__ import annotations
+"""Node 6: Auto-answer generation using LLM."""
 
 import json
+from typing import Any
 
-import structlog
 from langchain_groq import ChatGroq
+from langchain_core.messages import HumanMessage, SystemMessage
 
 from app.config.settings import get_settings
+from app.core.logger import get_logger
+from app.core.exceptions import LLMError
 from app.graph.state import AgentState
 
-logger = structlog.get_logger()
+logger = get_logger(__name__)
+settings = get_settings()
 
-SYSTEM_PROMPT_TEMPLATE = """당신은 비용 효율을 최우선으로 하는 고객센터 자동 응답 에이전트입니다.
+
+def generate_answer(state: AgentState) -> dict[str, Any]:
+    """Generate auto-answer based on FAQ search results."""
+    try:
+        # Mock path: skip LLM when mock_preset is active
+        if state.mock_preset and state.mock_preset != "":
+            mock_answer = "전원 버튼을 3초간 누르시면 LED가 점멸하며 연결 준비가 완료됩니다. 이후 기기와 페어링하세요."
+            logger.info("Answer generated (mock)", length=len(mock_answer))
+            return {"generated_answer": mock_answer}
+
+        llm = ChatGroq(
+            groq_api_key=settings.groq_api_key,
+            model_name=settings.groq_model,
+            temperature=settings.groq_temperature,
+            max_tokens=settings.groq_max_tokens,
+        )
+
+        system_prompt = """당신은 비용 효율을 최우선으로 하는 고객센터 자동 응답 에이전트입니다.
 
 ## 행동 규칙
+
 - 정중하고 간결한 존댓말을 사용하세요.
-- 200자(한국어 기준) 이내, 약 2-3문장으로 핵심 답변만 제공하세요.
+- 200자 이내로 핵심 답변만 제공하세요.
 - 불필요한 안부 인사나 감사 표현을 하지 마세요.
 - FAQ 검색 결과에 없는 내용은 추측하여 답변하지 마세요.
 - 검색 결과의 내용을 바탕으로 고객 질문에 직접 답변하세요.
 
 ## FAQ 검색 결과
-{faq_context}
 
-## 검색 정보
-- 검색 시도 횟수: {search_attempts}회
-- 최고 관련도 점수: {top_score}점
-{confidence_note}
 """
 
+        # Parse FAQ results
+        try:
+            faq_items = json.loads(state.faq_results)
+            faq_text = ""
+            for item in faq_items:
+                faq_text += f"- {item.get('title', '')}: {item.get('content', '')}\n"
+        except json.JSONDecodeError:
+            faq_text = state.faq_results
 
-def _format_faq_context(faq_results_json: str) -> str:
-    """FAQ 검색 결과 JSON을 마크다운 형식으로 변환함."""
-    try:
-        results = json.loads(faq_results_json)
-        if not results:
-            return "검색 결과 없음"
+        system_prompt += faq_text
 
-        lines = []
-        for i, item in enumerate(results, 1):
-            title = item.get("title", "")
-            content = item.get("content", "")
-            score = item.get("score", 0)
-            lines.append(f"### 결과 {i}: {title} (관련도: {score}점)")
-            lines.append(content)
-            lines.append("")
-        return "\n".join(lines)
-
-    except (json.JSONDecodeError, TypeError):
-        return faq_results_json
-
-
-def generate_answer(state: AgentState) -> AgentState:
-    """LLM을 사용하여 FAQ 기반 자동 답변을 생성함.
-
-    Args:
-        state: 현재 워크플로우 상태
-
-    Returns:
-        generated_answer 필드가 업데이트된 상태
-    """
-    settings = get_settings()
-    query = state.get("query", "")
-    faq_results = state.get("faq_results", "[]")
-    search_attempts = state.get("search_attempts", 1)
-    top_score = state.get("top_score", 0.0)
-
-    logger.info(
-        "자동 답변 생성 시작",
-        query=query[:50],
-        search_attempts=search_attempts,
-        top_score=top_score,
-    )
-
-    # 신뢰도 낮은 경우 불확실성 표현 유도
-    confidence_note = ""
-    if top_score < 80:
-        confidence_note = (
-            "- 주의: 검색 결과의 관련도가 높지 않습니다. "
-            "답변에 불확실성을 표현하세요."
-        )
-
-    faq_context = _format_faq_context(faq_results)
-
-    system_prompt = SYSTEM_PROMPT_TEMPLATE.format(
-        faq_context=faq_context,
-        search_attempts=search_attempts,
-        top_score=top_score,
-        confidence_note=confidence_note,
-    )
-
-    try:
-        llm = ChatGroq(
-            api_key=settings.groq_api_key,
-            model=settings.groq_model,
-            max_tokens=settings.groq_max_tokens,
-            temperature=settings.groq_temperature,
-            base_url="https://api.groq.com",
-        )
+        user_prompt = state.query
 
         messages = [
-            ("system", system_prompt),
-            ("human", query),
+            SystemMessage(content=system_prompt),
+            HumanMessage(content=user_prompt),
         ]
 
         response = llm.invoke(messages)
-        answer = response.content if hasattr(response, "content") else str(response)
+        generated_answer = response.content
 
-        logger.info("자동 답변 생성 완료", answer_length=len(answer))
+        logger.info("Answer generated", length=len(generated_answer))
 
-        return {"generated_answer": answer}
+        return {"generated_answer": generated_answer}
 
     except Exception as e:
-        logger.error("자동 답변 생성 LLM 호출 실패", error=str(e))
-        return {
-            "generated_answer": "",
-            "error": f"답변 생성 실패: {str(e)}",
-            "auto_processable": False,
-            "process_type": "escalation",
-        }
+        logger.error("Answer generation failed", error=str(e))
+        raise LLMError(f"Failed to generate answer: {str(e)}")

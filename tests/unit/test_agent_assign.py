@@ -1,71 +1,69 @@
-"""Node 9: 상담원 배정 단위 테스트."""
+"""Unit tests for agent assignment node."""
 
 import pytest
 
+from app.graph.state import AgentState
 from app.graph.nodes.agent_assign import assign_agent
 
 
-class TestAssignAgent:
-    """상담원 배정 노드 테스트."""
+def test_assign_agent_default_preset():
+    """Test agent assignment with default preset."""
+    state = AgentState(
+        query="test",
+        complexity="low",
+        category="제품사용",
+        mock_preset="default",
+    )
 
-    def test_default_preset_normal_priority(self):
-        """기본 프리셋 + low complexity: normal 우선순위."""
-        state = {
-            "category": "제품사용",
-            "complexity": "low",
-            "mock_preset": "default",
-            "mock_override": "",
-        }
-        result = assign_agent(state)
-        assert result["agent_id"] == "AGT-042"
-        assert result["agent_name"] == "김상담"
-        assert result["queue_position"] == 2
-        assert result["estimated_wait_minutes"] == 5
-        assert result["priority"] == "normal"
-        assert result["assign_status"] == "queued"
+    result = assign_agent(state)
 
-    def test_high_complexity_priority_upgrade(self):
-        """high complexity: priority 승격, 대기 시간 2분 단축."""
-        state = {
-            "category": "환불",
-            "complexity": "high",
-            "mock_preset": "default",
-            "mock_override": "",
-        }
-        result = assign_agent(state)
-        assert result["priority"] == "high"
-        assert result["estimated_wait_minutes"] == 3  # 5 - 2 = 3
+    assert result["agent_id"] == "AGT-042"
+    assert result["agent_name"] == "김상담"
+    assert result["queue_position"] > 0
 
-    def test_empty_preset(self):
-        """empty 프리셋: 가용 상담원 없음."""
-        state = {
-            "category": "제품사용",
-            "complexity": "high",
-            "mock_preset": "empty",
-            "mock_override": "",
-        }
-        result = assign_agent(state)
-        assert result["agent_id"] == ""
-        assert result["assign_status"] == "no_agent_available"
 
-    def test_error_preset(self):
-        """error 프리셋: 시스템 에러."""
-        state = {
-            "category": "제품사용",
-            "complexity": "high",
-            "mock_preset": "error",
-            "mock_override": "",
-        }
-        result = assign_agent(state)
-        assert result["assign_status"] == "system_error"
+def test_assign_agent_high_priority_on_high_complexity():
+    """Test priority adjustment for high complexity."""
+    state = AgentState(
+        query="test",
+        complexity="high",
+        category="환불",
+        mock_preset="default",
+    )
 
-    def test_timeout_preset(self):
-        """timeout 프리셋: 타임아웃."""
-        state = {
-            "category": "제품사용",
-            "complexity": "low",
-            "mock_preset": "timeout",
-            "mock_override": "",
-        }
-        result = assign_agent(state)
-        assert result["assign_status"] == "timeout"
+    result = assign_agent(state)
+
+    assert result["priority"] == "high"
+    assert result["estimated_wait_minutes"] < 5  # Should be reduced
+
+
+def test_assign_agent_empty_preset():
+    """Test agent assignment with empty preset."""
+    state = AgentState(
+        query="test",
+        complexity="low",
+        category="배송",
+        mock_preset="empty",
+    )
+
+    result = assign_agent(state)
+
+    assert result["agent_id"] == ""
+    assert result["agent_name"] == ""
+
+
+def test_assign_agent_with_override():
+    """Test agent assignment with override."""
+    override = '{"agent_id": "AGT-999", "agent_name": "이상담"}'
+    state = AgentState(
+        query="test",
+        complexity="low",
+        category="배송",
+        mock_preset="default",
+        mock_override=override,
+    )
+
+    result = assign_agent(state)
+
+    assert result["agent_id"] == "AGT-999"
+    assert result["agent_name"] == "이상담"

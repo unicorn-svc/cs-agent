@@ -1,0 +1,2320 @@
+C:\Users\hiond\AppData\Local\Programs\Python\Python312\Lib\site-packages\pytest_asyncio\plugin.py:207: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts =============================
+platform win32 -- Python 3.12.9, pytest-8.3.4, pluggy-1.6.0 -- C:\Users\hiond\AppData\Local\Programs\Python\Python312\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\hiond\workspace\cs-agent
+configfile: pyproject.toml
+plugins: anyio-4.12.1, devtools-0.12.2, Faker-40.1.2, langsmith-0.3.45, opik-1.10.5, asyncio-0.25.3, cov-5.0.0, typeguard-4.4.4
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=None
+collecting ... collected 44 items
+
+tests/integration/test_api.py::TestHealthEndpoint::test_health_check FAILED [  2%]
+tests/integration/test_api.py::TestMetricsEndpoint::test_prometheus_metrics FAILED [  4%]
+tests/integration/test_api.py::TestMetricsEndpoint::test_daily_metrics_mock PASSED [  6%]
+tests/integration/test_api.py::TestMetricsEndpoint::test_monthly_metrics_mock FAILED [  9%]
+tests/integration/test_api.py::TestChatStreamEndpoint::test_invalid_channel_rejected PASSED [ 11%]
+tests/integration/test_api.py::TestChatStreamEndpoint::test_empty_query_rejected PASSED [ 13%]
+tests/integration/test_api.py::TestChatStreamEndpoint::test_chat_stream_auto_answer PASSED [ 15%]
+tests/integration/test_workflow.py::test_auto_answer_workflow FAILED     [ 18%]
+tests/integration/test_workflow.py::test_escalation_workflow FAILED      [ 20%]
+tests/integration/test_workflow.py::test_workflow_with_error_preset FAILED [ 22%]
+tests/integration/test_workflow.py::test_workflow_json_parsing FAILED    [ 25%]
+tests/scenarios/test_scenarios.py::test_scenario_01_simple_faq_auto_process FAILED [ 27%]
+tests/scenarios/test_scenarios.py::test_scenario_02_high_complexity_escalation FAILED [ 29%]
+tests/scenarios/test_scenarios.py::test_scenario_03_faq_research_loop FAILED [ 31%]
+tests/scenarios/test_scenarios.py::test_scenario_04_processing_rate_70_percent FAILED [ 34%]
+tests/unit/test_agent_assign.py::test_assign_agent_default_preset PASSED [ 36%]
+tests/unit/test_agent_assign.py::test_assign_agent_high_priority_on_high_complexity PASSED [ 38%]
+tests/unit/test_agent_assign.py::test_assign_agent_empty_preset PASSED   [ 40%]
+tests/unit/test_agent_assign.py::test_assign_agent_with_override PASSED  [ 43%]
+tests/unit/test_cost_agg.py::test_aggregate_cost_default_preset PASSED   [ 45%]
+tests/unit/test_cost_agg.py::test_aggregate_cost_empty_preset PASSED     [ 47%]
+tests/unit/test_cost_agg.py::test_aggregate_cost_error_preset PASSED     [ 50%]
+tests/unit/test_cost_agg.py::test_aggregate_cost_with_override PASSED    [ 52%]
+tests/unit/test_decider.py::test_auto_process_when_score_high_and_low_complexity PASSED [ 54%]
+tests/unit/test_decider.py::test_no_auto_process_when_score_low PASSED   [ 56%]
+tests/unit/test_decider.py::test_no_auto_process_when_high_complexity PASSED [ 59%]
+tests/unit/test_decider.py::test_no_auto_process_both_conditions_fail PASSED [ 61%]
+tests/unit/test_faq_search.py::TestSearchFaq::test_default_search_returns_results PASSED [ 63%]
+tests/unit/test_faq_search.py::TestSearchFaq::test_empty_preset_returns_no_results FAILED [ 65%]
+tests/unit/test_faq_search.py::TestSearchFaq::test_search_attempts_max_3 PASSED [ 68%]
+tests/unit/test_faq_search.py::TestSearchFaq::test_evaluation_log_is_valid_json FAILED [ 70%]
+tests/unit/test_faq_search.py::TestSearchFaq::test_high_score_stops_early FAILED [ 72%]
+tests/unit/test_json_parser.py::test_parse_valid_json PASSED             [ 75%]
+tests/unit/test_json_parser.py::test_parse_json_with_extra_text PASSED   [ 77%]
+tests/unit/test_json_parser.py::test_parse_invalid_json PASSED           [ 79%]
+tests/unit/test_json_parser.py::test_parse_invalid_complexity PASSED     [ 81%]
+tests/unit/test_schemas.py::TestChatRequest::test_valid_request PASSED   [ 84%]
+tests/unit/test_schemas.py::TestChatRequest::test_empty_query_rejected PASSED [ 86%]
+tests/unit/test_schemas.py::TestChatRequest::test_query_max_length PASSED [ 88%]
+tests/unit/test_schemas.py::TestChatRequest::test_invalid_channel_rejected PASSED [ 90%]
+tests/unit/test_schemas.py::TestChatRequest::test_all_channels PASSED    [ 93%]
+tests/unit/test_schemas.py::TestChatRequest::test_all_presets PASSED     [ 95%]
+tests/unit/test_schemas.py::TestChatRequest::test_mock_override_max_length PASSED [ 97%]
+tests/unit/test_schemas.py::TestChatRequest::test_default_mock_override_is_empty PASSED [100%]
+
+================================== FAILURES ===================================
+____________________ TestHealthEndpoint.test_health_check _____________________
+
+self = <tests.integration.test_api.TestHealthEndpoint object at 0x000001603A4ACB60>
+client = <starlette.testclient.TestClient object at 0x000001603A49BF80>
+
+    def test_health_check(self, client):
+        """GET /health 정상 응답."""
+        response = client.get("/health")
+>       assert response.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\integration\test_api.py:31: AssertionError
+_________________ TestMetricsEndpoint.test_prometheus_metrics _________________
+
+self = <tests.integration.test_api.TestMetricsEndpoint object at 0x000001603A4AEEA0>
+client = <starlette.testclient.TestClient object at 0x0000016082DB6000>
+
+    def test_prometheus_metrics(self, client):
+        """GET /metrics Prometheus 형식 응답."""
+        response = client.get("/metrics")
+>       assert response.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\integration\test_api.py:44: AssertionError
+________________ TestMetricsEndpoint.test_monthly_metrics_mock ________________
+
+self = <tests.integration.test_api.TestMetricsEndpoint object at 0x000001603A4ADDF0>
+client = <starlette.testclient.TestClient object at 0x0000016082DB6330>
+
+    def test_monthly_metrics_mock(self, client):
+        """GET /v1/metrics/monthly Mock 모드 응답."""
+        response = client.get(
+            "/v1/metrics/monthly?year=2026&month=3", headers=AUTH_HEADERS
+        )
+>       assert response.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\integration\test_api.py:60: AssertionError
+__________________________ test_auto_answer_workflow __________________________
+
+state = AgentState(query='충전 케이블 연결 방법을 알려주세요', inquiry_channel='웹채팅', mock_preset='default', mock_override='', complexity='hi...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+>           response = llm.invoke(messages)
+
+app\graph\nodes\classifier.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:395: in invoke
+    self.generate_prompt(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1025: in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:842: in generate
+    self._generate_with_cache(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1091: in _generate_with_cache
+    result = self._generate(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_groq\chat_models.py:474: in _generate
+    response = self.client.create(messages=message_dicts, **params)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\resources\chat\completions.py:461: in create
+    return self._post(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1242: in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <groq.Groq object at 0x0000016082DDBC20>
+cast_to = <class 'groq.types.chat.chat_completion.ChatCompletion'>
+options = FinalRequestOptions(method='post', url='/openai/v1/chat/completions', params={}, headers=NOT_GIVEN, max_retries=NOT_GI...cout-17b-16e-instruct', 'max_tokens': 512, 'n': 1, 'stop': None, 'stream': False, 'temperature': 0.1}, extra_json=None)
+
+    def request(
+        self,
+        cast_to: Type[ResponseT],
+        options: FinalRequestOptions,
+        *,
+        stream: bool = False,
+        stream_cls: type[_StreamT] | None = None,
+    ) -> ResponseT | _StreamT:
+        cast_to = self._maybe_override_cast_to(cast_to, options)
+    
+        # create a copy of the options we were given so that if the
+        # options are mutated later & we then retry, the retries are
+        # given the original options
+        input_options = model_copy(options)
+        if input_options.idempotency_key is None and input_options.method.lower() != "get":
+            # ensure the idempotency key is reused between requests
+            input_options.idempotency_key = self._idempotency_key()
+    
+        response: httpx.Response | None = None
+        max_retries = input_options.get_max_retries(self.max_retries)
+    
+        retries_taken = 0
+        for retries_taken in range(max_retries + 1):
+            options = model_copy(input_options)
+            options = self._prepare_options(options)
+    
+            remaining_retries = max_retries - retries_taken
+            request = self._build_request(options, retries_taken=retries_taken)
+            self._prepare_request(request)
+    
+            kwargs: HttpxSendArgs = {}
+            if self.custom_auth is not None:
+                kwargs["auth"] = self.custom_auth
+    
+            if options.follow_redirects is not None:
+                kwargs["follow_redirects"] = options.follow_redirects
+    
+            log.debug("Sending HTTP Request: %s %s", request.method, request.url)
+    
+            response = None
+            try:
+                response = self._client.send(
+                    request,
+                    stream=stream or self._should_stream_response_body(request=request),
+                    **kwargs,
+                )
+            except httpx.TimeoutException as err:
+                log.debug("Encountered httpx.TimeoutException", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising timeout error")
+                raise APITimeoutError(request=request) from err
+            except Exception as err:
+                log.debug("Encountered Exception", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising connection error")
+                raise APIConnectionError(request=request) from err
+    
+            log.debug(
+                'HTTP Response: %s %s "%i %s" %s',
+                request.method,
+                request.url,
+                response.status_code,
+                response.reason_phrase,
+                response.headers,
+            )
+    
+            try:
+                response.raise_for_status()
+            except httpx.HTTPStatusError as err:  # thrown on 4xx and 5xx status code
+                log.debug("Encountered httpx.HTTPStatusError", exc_info=True)
+    
+                if remaining_retries > 0 and self._should_retry(err.response):
+                    err.response.close()
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=response,
+                    )
+                    continue
+    
+                # If the response is streamed then we need to explicitly read the response
+                # to completion before attempting to access the response text.
+                if not err.response.is_closed:
+                    err.response.read()
+    
+                log.debug("Re-raising status error")
+>               raise self._make_status_error_from_response(err.response) from None
+E               groq.AuthenticationError: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1044: AuthenticationError
+
+During handling of the above exception, another exception occurred:
+
+workflow = <langgraph.graph.state.CompiledStateGraph object at 0x0000016082E50770>
+
+    def test_auto_answer_workflow(workflow):
+        """Test complete auto-answer workflow."""
+        state = AgentState(
+            query="충전 케이블 연결 방법을 알려주세요",
+            inquiry_channel="웹채팅",
+            mock_preset="default",
+        )
+    
+>       result = workflow.invoke(state.model_dump())
+
+tests\integration\test_workflow.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:3085: in invoke
+    for chunk in self.stream(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:2674: in stream
+    for _ in runner.tick(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_runner.py:162: in tick
+    run_with_retry(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_retry.py:42: in run_with_retry
+    return task.proc.invoke(task.input, config)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:657: in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:401: in invoke
+    ret = self.func(*args, **kwargs)
+app\graph\workflow.py:27: in node_classify
+    result = classify_question(state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+state = AgentState(query='충전 케이블 연결 방법을 알려주세요', inquiry_channel='웹채팅', mock_preset='default', mock_override='', complexity='hi...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+            response = llm.invoke(messages)
+            llm_output = response.content
+    
+            logger.info("Question classified", llm_output=llm_output[:100])
+    
+            return {"llm_output": llm_output}
+    
+        except Exception as e:
+            logger.error("Question classification failed", error=str(e))
+>           raise LLMError(f"Failed to classify question: {str(e)}")
+E           app.core.exceptions.LLMError: Failed to classify question: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+E           During task with name 'classify' and id '6a8503f5-f079-925b-674b-3ffabd78352e'
+
+app\graph\nodes\classifier.py:63: LLMError
+---------------------------- Captured stdout setup ----------------------------
+{"event": "Workflow compiled successfully", "timestamp": "2026-03-26T15:00:16.375437Z", "level": "info"}
+---------------------------- Captured stdout call -----------------------------
+{"error": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}", "event": "Question classification failed", "timestamp": "2026-03-26T15:00:19.670896Z", "level": "error"}
+__________________________ test_escalation_workflow ___________________________
+
+state = AgentState(query='환불 분쟁이 있습니다', inquiry_channel='전화', mock_preset='default', mock_override='', complexity='high', cate...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+>           response = llm.invoke(messages)
+
+app\graph\nodes\classifier.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:395: in invoke
+    self.generate_prompt(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1025: in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:842: in generate
+    self._generate_with_cache(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1091: in _generate_with_cache
+    result = self._generate(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_groq\chat_models.py:474: in _generate
+    response = self.client.create(messages=message_dicts, **params)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\resources\chat\completions.py:461: in create
+    return self._post(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1242: in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <groq.Groq object at 0x0000016084029730>
+cast_to = <class 'groq.types.chat.chat_completion.ChatCompletion'>
+options = FinalRequestOptions(method='post', url='/openai/v1/chat/completions', params={}, headers=NOT_GIVEN, max_retries=NOT_GI...cout-17b-16e-instruct', 'max_tokens': 512, 'n': 1, 'stop': None, 'stream': False, 'temperature': 0.1}, extra_json=None)
+
+    def request(
+        self,
+        cast_to: Type[ResponseT],
+        options: FinalRequestOptions,
+        *,
+        stream: bool = False,
+        stream_cls: type[_StreamT] | None = None,
+    ) -> ResponseT | _StreamT:
+        cast_to = self._maybe_override_cast_to(cast_to, options)
+    
+        # create a copy of the options we were given so that if the
+        # options are mutated later & we then retry, the retries are
+        # given the original options
+        input_options = model_copy(options)
+        if input_options.idempotency_key is None and input_options.method.lower() != "get":
+            # ensure the idempotency key is reused between requests
+            input_options.idempotency_key = self._idempotency_key()
+    
+        response: httpx.Response | None = None
+        max_retries = input_options.get_max_retries(self.max_retries)
+    
+        retries_taken = 0
+        for retries_taken in range(max_retries + 1):
+            options = model_copy(input_options)
+            options = self._prepare_options(options)
+    
+            remaining_retries = max_retries - retries_taken
+            request = self._build_request(options, retries_taken=retries_taken)
+            self._prepare_request(request)
+    
+            kwargs: HttpxSendArgs = {}
+            if self.custom_auth is not None:
+                kwargs["auth"] = self.custom_auth
+    
+            if options.follow_redirects is not None:
+                kwargs["follow_redirects"] = options.follow_redirects
+    
+            log.debug("Sending HTTP Request: %s %s", request.method, request.url)
+    
+            response = None
+            try:
+                response = self._client.send(
+                    request,
+                    stream=stream or self._should_stream_response_body(request=request),
+                    **kwargs,
+                )
+            except httpx.TimeoutException as err:
+                log.debug("Encountered httpx.TimeoutException", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising timeout error")
+                raise APITimeoutError(request=request) from err
+            except Exception as err:
+                log.debug("Encountered Exception", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising connection error")
+                raise APIConnectionError(request=request) from err
+    
+            log.debug(
+                'HTTP Response: %s %s "%i %s" %s',
+                request.method,
+                request.url,
+                response.status_code,
+                response.reason_phrase,
+                response.headers,
+            )
+    
+            try:
+                response.raise_for_status()
+            except httpx.HTTPStatusError as err:  # thrown on 4xx and 5xx status code
+                log.debug("Encountered httpx.HTTPStatusError", exc_info=True)
+    
+                if remaining_retries > 0 and self._should_retry(err.response):
+                    err.response.close()
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=response,
+                    )
+                    continue
+    
+                # If the response is streamed then we need to explicitly read the response
+                # to completion before attempting to access the response text.
+                if not err.response.is_closed:
+                    err.response.read()
+    
+                log.debug("Re-raising status error")
+>               raise self._make_status_error_from_response(err.response) from None
+E               groq.AuthenticationError: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1044: AuthenticationError
+
+During handling of the above exception, another exception occurred:
+
+workflow = <langgraph.graph.state.CompiledStateGraph object at 0x0000016082F9E480>
+
+    def test_escalation_workflow(workflow):
+        """Test complete escalation workflow."""
+        state = AgentState(
+            query="환불 분쟁이 있습니다",
+            inquiry_channel="전화",
+            mock_preset="default",
+        )
+    
+>       result = workflow.invoke(state.model_dump())
+
+tests\integration\test_workflow.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:3085: in invoke
+    for chunk in self.stream(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:2674: in stream
+    for _ in runner.tick(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_runner.py:162: in tick
+    run_with_retry(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_retry.py:42: in run_with_retry
+    return task.proc.invoke(task.input, config)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:657: in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:401: in invoke
+    ret = self.func(*args, **kwargs)
+app\graph\workflow.py:27: in node_classify
+    result = classify_question(state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+state = AgentState(query='환불 분쟁이 있습니다', inquiry_channel='전화', mock_preset='default', mock_override='', complexity='high', cate...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+            response = llm.invoke(messages)
+            llm_output = response.content
+    
+            logger.info("Question classified", llm_output=llm_output[:100])
+    
+            return {"llm_output": llm_output}
+    
+        except Exception as e:
+            logger.error("Question classification failed", error=str(e))
+>           raise LLMError(f"Failed to classify question: {str(e)}")
+E           app.core.exceptions.LLMError: Failed to classify question: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+E           During task with name 'classify' and id 'a0d40f39-bb04-7ca3-4093-34042a28153d'
+
+app\graph\nodes\classifier.py:63: LLMError
+---------------------------- Captured stdout setup ----------------------------
+{"event": "Workflow compiled successfully", "timestamp": "2026-03-26T15:00:20.258997Z", "level": "info"}
+---------------------------- Captured stdout call -----------------------------
+{"error": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}", "event": "Question classification failed", "timestamp": "2026-03-26T15:00:23.077497Z", "level": "error"}
+_______________________ test_workflow_with_error_preset _______________________
+
+state = AgentState(query='배송 현황을 확인하고 싶습니다', inquiry_channel='웹채팅', mock_preset='error', mock_override='', complexity='high', ...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+>           response = llm.invoke(messages)
+
+app\graph\nodes\classifier.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:395: in invoke
+    self.generate_prompt(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1025: in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:842: in generate
+    self._generate_with_cache(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1091: in _generate_with_cache
+    result = self._generate(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_groq\chat_models.py:474: in _generate
+    response = self.client.create(messages=message_dicts, **params)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\resources\chat\completions.py:461: in create
+    return self._post(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1242: in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <groq.Groq object at 0x00000160840C4FB0>
+cast_to = <class 'groq.types.chat.chat_completion.ChatCompletion'>
+options = FinalRequestOptions(method='post', url='/openai/v1/chat/completions', params={}, headers=NOT_GIVEN, max_retries=NOT_GI...cout-17b-16e-instruct', 'max_tokens': 512, 'n': 1, 'stop': None, 'stream': False, 'temperature': 0.1}, extra_json=None)
+
+    def request(
+        self,
+        cast_to: Type[ResponseT],
+        options: FinalRequestOptions,
+        *,
+        stream: bool = False,
+        stream_cls: type[_StreamT] | None = None,
+    ) -> ResponseT | _StreamT:
+        cast_to = self._maybe_override_cast_to(cast_to, options)
+    
+        # create a copy of the options we were given so that if the
+        # options are mutated later & we then retry, the retries are
+        # given the original options
+        input_options = model_copy(options)
+        if input_options.idempotency_key is None and input_options.method.lower() != "get":
+            # ensure the idempotency key is reused between requests
+            input_options.idempotency_key = self._idempotency_key()
+    
+        response: httpx.Response | None = None
+        max_retries = input_options.get_max_retries(self.max_retries)
+    
+        retries_taken = 0
+        for retries_taken in range(max_retries + 1):
+            options = model_copy(input_options)
+            options = self._prepare_options(options)
+    
+            remaining_retries = max_retries - retries_taken
+            request = self._build_request(options, retries_taken=retries_taken)
+            self._prepare_request(request)
+    
+            kwargs: HttpxSendArgs = {}
+            if self.custom_auth is not None:
+                kwargs["auth"] = self.custom_auth
+    
+            if options.follow_redirects is not None:
+                kwargs["follow_redirects"] = options.follow_redirects
+    
+            log.debug("Sending HTTP Request: %s %s", request.method, request.url)
+    
+            response = None
+            try:
+                response = self._client.send(
+                    request,
+                    stream=stream or self._should_stream_response_body(request=request),
+                    **kwargs,
+                )
+            except httpx.TimeoutException as err:
+                log.debug("Encountered httpx.TimeoutException", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising timeout error")
+                raise APITimeoutError(request=request) from err
+            except Exception as err:
+                log.debug("Encountered Exception", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising connection error")
+                raise APIConnectionError(request=request) from err
+    
+            log.debug(
+                'HTTP Response: %s %s "%i %s" %s',
+                request.method,
+                request.url,
+                response.status_code,
+                response.reason_phrase,
+                response.headers,
+            )
+    
+            try:
+                response.raise_for_status()
+            except httpx.HTTPStatusError as err:  # thrown on 4xx and 5xx status code
+                log.debug("Encountered httpx.HTTPStatusError", exc_info=True)
+    
+                if remaining_retries > 0 and self._should_retry(err.response):
+                    err.response.close()
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=response,
+                    )
+                    continue
+    
+                # If the response is streamed then we need to explicitly read the response
+                # to completion before attempting to access the response text.
+                if not err.response.is_closed:
+                    err.response.read()
+    
+                log.debug("Re-raising status error")
+>               raise self._make_status_error_from_response(err.response) from None
+E               groq.AuthenticationError: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1044: AuthenticationError
+
+During handling of the above exception, another exception occurred:
+
+workflow = <langgraph.graph.state.CompiledStateGraph object at 0x00000160840C7710>
+
+    def test_workflow_with_error_preset(workflow):
+        """Test workflow with error preset."""
+        state = AgentState(
+            query="배송 현황을 확인하고 싶습니다",
+            inquiry_channel="웹채팅",
+            mock_preset="error",
+        )
+    
+>       result = workflow.invoke(state.model_dump())
+
+tests\integration\test_workflow.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:3085: in invoke
+    for chunk in self.stream(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:2674: in stream
+    for _ in runner.tick(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_runner.py:162: in tick
+    run_with_retry(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_retry.py:42: in run_with_retry
+    return task.proc.invoke(task.input, config)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:657: in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:401: in invoke
+    ret = self.func(*args, **kwargs)
+app\graph\workflow.py:27: in node_classify
+    result = classify_question(state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+state = AgentState(query='배송 현황을 확인하고 싶습니다', inquiry_channel='웹채팅', mock_preset='error', mock_override='', complexity='high', ...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+            response = llm.invoke(messages)
+            llm_output = response.content
+    
+            logger.info("Question classified", llm_output=llm_output[:100])
+    
+            return {"llm_output": llm_output}
+    
+        except Exception as e:
+            logger.error("Question classification failed", error=str(e))
+>           raise LLMError(f"Failed to classify question: {str(e)}")
+E           app.core.exceptions.LLMError: Failed to classify question: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+E           During task with name 'classify' and id '9ea281fb-d5a5-6ccd-f277-e876983e1ebe'
+
+app\graph\nodes\classifier.py:63: LLMError
+---------------------------- Captured stdout setup ----------------------------
+{"event": "Workflow compiled successfully", "timestamp": "2026-03-26T15:00:23.507859Z", "level": "info"}
+---------------------------- Captured stdout call -----------------------------
+{"error": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}", "event": "Question classification failed", "timestamp": "2026-03-26T15:00:26.338582Z", "level": "error"}
+_________________________ test_workflow_json_parsing __________________________
+
+state = AgentState(query='제품 설정 방법', inquiry_channel='카카오톡', mock_preset='default', mock_override='', complexity='high', categ...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+>           response = llm.invoke(messages)
+
+app\graph\nodes\classifier.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:395: in invoke
+    self.generate_prompt(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1025: in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:842: in generate
+    self._generate_with_cache(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1091: in _generate_with_cache
+    result = self._generate(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_groq\chat_models.py:474: in _generate
+    response = self.client.create(messages=message_dicts, **params)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\resources\chat\completions.py:461: in create
+    return self._post(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1242: in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <groq.Groq object at 0x000001608402A9C0>
+cast_to = <class 'groq.types.chat.chat_completion.ChatCompletion'>
+options = FinalRequestOptions(method='post', url='/openai/v1/chat/completions', params={}, headers=NOT_GIVEN, max_retries=NOT_GI...cout-17b-16e-instruct', 'max_tokens': 512, 'n': 1, 'stop': None, 'stream': False, 'temperature': 0.1}, extra_json=None)
+
+    def request(
+        self,
+        cast_to: Type[ResponseT],
+        options: FinalRequestOptions,
+        *,
+        stream: bool = False,
+        stream_cls: type[_StreamT] | None = None,
+    ) -> ResponseT | _StreamT:
+        cast_to = self._maybe_override_cast_to(cast_to, options)
+    
+        # create a copy of the options we were given so that if the
+        # options are mutated later & we then retry, the retries are
+        # given the original options
+        input_options = model_copy(options)
+        if input_options.idempotency_key is None and input_options.method.lower() != "get":
+            # ensure the idempotency key is reused between requests
+            input_options.idempotency_key = self._idempotency_key()
+    
+        response: httpx.Response | None = None
+        max_retries = input_options.get_max_retries(self.max_retries)
+    
+        retries_taken = 0
+        for retries_taken in range(max_retries + 1):
+            options = model_copy(input_options)
+            options = self._prepare_options(options)
+    
+            remaining_retries = max_retries - retries_taken
+            request = self._build_request(options, retries_taken=retries_taken)
+            self._prepare_request(request)
+    
+            kwargs: HttpxSendArgs = {}
+            if self.custom_auth is not None:
+                kwargs["auth"] = self.custom_auth
+    
+            if options.follow_redirects is not None:
+                kwargs["follow_redirects"] = options.follow_redirects
+    
+            log.debug("Sending HTTP Request: %s %s", request.method, request.url)
+    
+            response = None
+            try:
+                response = self._client.send(
+                    request,
+                    stream=stream or self._should_stream_response_body(request=request),
+                    **kwargs,
+                )
+            except httpx.TimeoutException as err:
+                log.debug("Encountered httpx.TimeoutException", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising timeout error")
+                raise APITimeoutError(request=request) from err
+            except Exception as err:
+                log.debug("Encountered Exception", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising connection error")
+                raise APIConnectionError(request=request) from err
+    
+            log.debug(
+                'HTTP Response: %s %s "%i %s" %s',
+                request.method,
+                request.url,
+                response.status_code,
+                response.reason_phrase,
+                response.headers,
+            )
+    
+            try:
+                response.raise_for_status()
+            except httpx.HTTPStatusError as err:  # thrown on 4xx and 5xx status code
+                log.debug("Encountered httpx.HTTPStatusError", exc_info=True)
+    
+                if remaining_retries > 0 and self._should_retry(err.response):
+                    err.response.close()
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=response,
+                    )
+                    continue
+    
+                # If the response is streamed then we need to explicitly read the response
+                # to completion before attempting to access the response text.
+                if not err.response.is_closed:
+                    err.response.read()
+    
+                log.debug("Re-raising status error")
+>               raise self._make_status_error_from_response(err.response) from None
+E               groq.AuthenticationError: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1044: AuthenticationError
+
+During handling of the above exception, another exception occurred:
+
+workflow = <langgraph.graph.state.CompiledStateGraph object at 0x0000016084028DA0>
+
+    def test_workflow_json_parsing(workflow):
+        """Test JSON parsing in workflow."""
+        state = AgentState(
+            query="제품 설정 방법",
+            inquiry_channel="카카오톡",
+            mock_preset="default",
+        )
+    
+>       result = workflow.invoke(state.model_dump())
+
+tests\integration\test_workflow.py:67: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:3085: in invoke
+    for chunk in self.stream(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:2674: in stream
+    for _ in runner.tick(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_runner.py:162: in tick
+    run_with_retry(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_retry.py:42: in run_with_retry
+    return task.proc.invoke(task.input, config)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:657: in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:401: in invoke
+    ret = self.func(*args, **kwargs)
+app\graph\workflow.py:27: in node_classify
+    result = classify_question(state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+state = AgentState(query='제품 설정 방법', inquiry_channel='카카오톡', mock_preset='default', mock_override='', complexity='high', categ...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+            response = llm.invoke(messages)
+            llm_output = response.content
+    
+            logger.info("Question classified", llm_output=llm_output[:100])
+    
+            return {"llm_output": llm_output}
+    
+        except Exception as e:
+            logger.error("Question classification failed", error=str(e))
+>           raise LLMError(f"Failed to classify question: {str(e)}")
+E           app.core.exceptions.LLMError: Failed to classify question: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+E           During task with name 'classify' and id 'e07c815b-80bb-d4cd-1c51-330230b8378f'
+
+app\graph\nodes\classifier.py:63: LLMError
+---------------------------- Captured stdout setup ----------------------------
+{"event": "Workflow compiled successfully", "timestamp": "2026-03-26T15:00:27.255511Z", "level": "info"}
+---------------------------- Captured stdout call -----------------------------
+{"error": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}", "event": "Question classification failed", "timestamp": "2026-03-26T15:00:30.073690Z", "level": "error"}
+__________________ test_scenario_01_simple_faq_auto_process ___________________
+
+state = AgentState(query='충전 케이블 연결 방법을 알려주세요', inquiry_channel='웹채팅', mock_preset='default', mock_override='', complexity='hi...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+>           response = llm.invoke(messages)
+
+app\graph\nodes\classifier.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:395: in invoke
+    self.generate_prompt(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1025: in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:842: in generate
+    self._generate_with_cache(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1091: in _generate_with_cache
+    result = self._generate(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_groq\chat_models.py:474: in _generate
+    response = self.client.create(messages=message_dicts, **params)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\resources\chat\completions.py:461: in create
+    return self._post(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1242: in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <groq.Groq object at 0x0000016082E50DA0>
+cast_to = <class 'groq.types.chat.chat_completion.ChatCompletion'>
+options = FinalRequestOptions(method='post', url='/openai/v1/chat/completions', params={}, headers=NOT_GIVEN, max_retries=NOT_GI...cout-17b-16e-instruct', 'max_tokens': 512, 'n': 1, 'stop': None, 'stream': False, 'temperature': 0.1}, extra_json=None)
+
+    def request(
+        self,
+        cast_to: Type[ResponseT],
+        options: FinalRequestOptions,
+        *,
+        stream: bool = False,
+        stream_cls: type[_StreamT] | None = None,
+    ) -> ResponseT | _StreamT:
+        cast_to = self._maybe_override_cast_to(cast_to, options)
+    
+        # create a copy of the options we were given so that if the
+        # options are mutated later & we then retry, the retries are
+        # given the original options
+        input_options = model_copy(options)
+        if input_options.idempotency_key is None and input_options.method.lower() != "get":
+            # ensure the idempotency key is reused between requests
+            input_options.idempotency_key = self._idempotency_key()
+    
+        response: httpx.Response | None = None
+        max_retries = input_options.get_max_retries(self.max_retries)
+    
+        retries_taken = 0
+        for retries_taken in range(max_retries + 1):
+            options = model_copy(input_options)
+            options = self._prepare_options(options)
+    
+            remaining_retries = max_retries - retries_taken
+            request = self._build_request(options, retries_taken=retries_taken)
+            self._prepare_request(request)
+    
+            kwargs: HttpxSendArgs = {}
+            if self.custom_auth is not None:
+                kwargs["auth"] = self.custom_auth
+    
+            if options.follow_redirects is not None:
+                kwargs["follow_redirects"] = options.follow_redirects
+    
+            log.debug("Sending HTTP Request: %s %s", request.method, request.url)
+    
+            response = None
+            try:
+                response = self._client.send(
+                    request,
+                    stream=stream or self._should_stream_response_body(request=request),
+                    **kwargs,
+                )
+            except httpx.TimeoutException as err:
+                log.debug("Encountered httpx.TimeoutException", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising timeout error")
+                raise APITimeoutError(request=request) from err
+            except Exception as err:
+                log.debug("Encountered Exception", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising connection error")
+                raise APIConnectionError(request=request) from err
+    
+            log.debug(
+                'HTTP Response: %s %s "%i %s" %s',
+                request.method,
+                request.url,
+                response.status_code,
+                response.reason_phrase,
+                response.headers,
+            )
+    
+            try:
+                response.raise_for_status()
+            except httpx.HTTPStatusError as err:  # thrown on 4xx and 5xx status code
+                log.debug("Encountered httpx.HTTPStatusError", exc_info=True)
+    
+                if remaining_retries > 0 and self._should_retry(err.response):
+                    err.response.close()
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=response,
+                    )
+                    continue
+    
+                # If the response is streamed then we need to explicitly read the response
+                # to completion before attempting to access the response text.
+                if not err.response.is_closed:
+                    err.response.read()
+    
+                log.debug("Re-raising status error")
+>               raise self._make_status_error_from_response(err.response) from None
+E               groq.AuthenticationError: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1044: AuthenticationError
+
+During handling of the above exception, another exception occurred:
+
+workflow = <langgraph.graph.state.CompiledStateGraph object at 0x0000016083029340>
+
+    def test_scenario_01_simple_faq_auto_process(workflow):
+        """SC-01: Simple FAQ auto-processing."""
+        state = AgentState(
+            query="충전 케이블 연결 방법을 알려주세요",
+            inquiry_channel="웹채팅",
+            mock_preset="default",
+        )
+    
+>       result = workflow.invoke(state.model_dump())
+
+tests\scenarios\test_scenarios.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:3085: in invoke
+    for chunk in self.stream(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:2674: in stream
+    for _ in runner.tick(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_runner.py:162: in tick
+    run_with_retry(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_retry.py:42: in run_with_retry
+    return task.proc.invoke(task.input, config)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:657: in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:401: in invoke
+    ret = self.func(*args, **kwargs)
+app\graph\workflow.py:27: in node_classify
+    result = classify_question(state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+state = AgentState(query='충전 케이블 연결 방법을 알려주세요', inquiry_channel='웹채팅', mock_preset='default', mock_override='', complexity='hi...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+            response = llm.invoke(messages)
+            llm_output = response.content
+    
+            logger.info("Question classified", llm_output=llm_output[:100])
+    
+            return {"llm_output": llm_output}
+    
+        except Exception as e:
+            logger.error("Question classification failed", error=str(e))
+>           raise LLMError(f"Failed to classify question: {str(e)}")
+E           app.core.exceptions.LLMError: Failed to classify question: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+E           During task with name 'classify' and id '244cd6b6-e0b0-e767-8316-d7b84a872fd6'
+
+app\graph\nodes\classifier.py:63: LLMError
+---------------------------- Captured stdout setup ----------------------------
+{"event": "Workflow compiled successfully", "timestamp": "2026-03-26T15:00:30.482734Z", "level": "info"}
+---------------------------- Captured stdout call -----------------------------
+{"error": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}", "event": "Question classification failed", "timestamp": "2026-03-26T15:00:33.545473Z", "level": "error"}
+_________________ test_scenario_02_high_complexity_escalation _________________
+
+state = AgentState(query='환불 분쟁으로 인한 법적 소송 관련 상담이 필요합니다', inquiry_channel='전화', mock_preset='default', mock_override='', compl...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+>           response = llm.invoke(messages)
+
+app\graph\nodes\classifier.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:395: in invoke
+    self.generate_prompt(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1025: in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:842: in generate
+    self._generate_with_cache(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1091: in _generate_with_cache
+    result = self._generate(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_groq\chat_models.py:474: in _generate
+    response = self.client.create(messages=message_dicts, **params)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\resources\chat\completions.py:461: in create
+    return self._post(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1242: in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <groq.Groq object at 0x00000160840E0740>
+cast_to = <class 'groq.types.chat.chat_completion.ChatCompletion'>
+options = FinalRequestOptions(method='post', url='/openai/v1/chat/completions', params={}, headers=NOT_GIVEN, max_retries=NOT_GI...cout-17b-16e-instruct', 'max_tokens': 512, 'n': 1, 'stop': None, 'stream': False, 'temperature': 0.1}, extra_json=None)
+
+    def request(
+        self,
+        cast_to: Type[ResponseT],
+        options: FinalRequestOptions,
+        *,
+        stream: bool = False,
+        stream_cls: type[_StreamT] | None = None,
+    ) -> ResponseT | _StreamT:
+        cast_to = self._maybe_override_cast_to(cast_to, options)
+    
+        # create a copy of the options we were given so that if the
+        # options are mutated later & we then retry, the retries are
+        # given the original options
+        input_options = model_copy(options)
+        if input_options.idempotency_key is None and input_options.method.lower() != "get":
+            # ensure the idempotency key is reused between requests
+            input_options.idempotency_key = self._idempotency_key()
+    
+        response: httpx.Response | None = None
+        max_retries = input_options.get_max_retries(self.max_retries)
+    
+        retries_taken = 0
+        for retries_taken in range(max_retries + 1):
+            options = model_copy(input_options)
+            options = self._prepare_options(options)
+    
+            remaining_retries = max_retries - retries_taken
+            request = self._build_request(options, retries_taken=retries_taken)
+            self._prepare_request(request)
+    
+            kwargs: HttpxSendArgs = {}
+            if self.custom_auth is not None:
+                kwargs["auth"] = self.custom_auth
+    
+            if options.follow_redirects is not None:
+                kwargs["follow_redirects"] = options.follow_redirects
+    
+            log.debug("Sending HTTP Request: %s %s", request.method, request.url)
+    
+            response = None
+            try:
+                response = self._client.send(
+                    request,
+                    stream=stream or self._should_stream_response_body(request=request),
+                    **kwargs,
+                )
+            except httpx.TimeoutException as err:
+                log.debug("Encountered httpx.TimeoutException", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising timeout error")
+                raise APITimeoutError(request=request) from err
+            except Exception as err:
+                log.debug("Encountered Exception", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising connection error")
+                raise APIConnectionError(request=request) from err
+    
+            log.debug(
+                'HTTP Response: %s %s "%i %s" %s',
+                request.method,
+                request.url,
+                response.status_code,
+                response.reason_phrase,
+                response.headers,
+            )
+    
+            try:
+                response.raise_for_status()
+            except httpx.HTTPStatusError as err:  # thrown on 4xx and 5xx status code
+                log.debug("Encountered httpx.HTTPStatusError", exc_info=True)
+    
+                if remaining_retries > 0 and self._should_retry(err.response):
+                    err.response.close()
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=response,
+                    )
+                    continue
+    
+                # If the response is streamed then we need to explicitly read the response
+                # to completion before attempting to access the response text.
+                if not err.response.is_closed:
+                    err.response.read()
+    
+                log.debug("Re-raising status error")
+>               raise self._make_status_error_from_response(err.response) from None
+E               groq.AuthenticationError: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1044: AuthenticationError
+
+During handling of the above exception, another exception occurred:
+
+workflow = <langgraph.graph.state.CompiledStateGraph object at 0x00000160840ED910>
+
+    def test_scenario_02_high_complexity_escalation(workflow):
+        """SC-02: High complexity escalation."""
+        state = AgentState(
+            query="환불 분쟁으로 인한 법적 소송 관련 상담이 필요합니다",
+            inquiry_channel="전화",
+            mock_preset="default",
+        )
+    
+>       result = workflow.invoke(state.model_dump())
+
+tests\scenarios\test_scenarios.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:3085: in invoke
+    for chunk in self.stream(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:2674: in stream
+    for _ in runner.tick(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_runner.py:162: in tick
+    run_with_retry(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_retry.py:42: in run_with_retry
+    return task.proc.invoke(task.input, config)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:657: in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:401: in invoke
+    ret = self.func(*args, **kwargs)
+app\graph\workflow.py:27: in node_classify
+    result = classify_question(state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+state = AgentState(query='환불 분쟁으로 인한 법적 소송 관련 상담이 필요합니다', inquiry_channel='전화', mock_preset='default', mock_override='', compl...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+            response = llm.invoke(messages)
+            llm_output = response.content
+    
+            logger.info("Question classified", llm_output=llm_output[:100])
+    
+            return {"llm_output": llm_output}
+    
+        except Exception as e:
+            logger.error("Question classification failed", error=str(e))
+>           raise LLMError(f"Failed to classify question: {str(e)}")
+E           app.core.exceptions.LLMError: Failed to classify question: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+E           During task with name 'classify' and id 'fd2e54f2-5b04-298f-7081-528f7fbf5b0f'
+
+app\graph\nodes\classifier.py:63: LLMError
+---------------------------- Captured stdout setup ----------------------------
+{"event": "Workflow compiled successfully", "timestamp": "2026-03-26T15:00:33.961239Z", "level": "info"}
+---------------------------- Captured stdout call -----------------------------
+{"error": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}", "event": "Question classification failed", "timestamp": "2026-03-26T15:00:36.764319Z", "level": "error"}
+_____________________ test_scenario_03_faq_research_loop ______________________
+
+state = AgentState(query='이상한 요청으로 FAQ 재검색을 트리거', inquiry_channel='이메일', mock_preset='default', mock_override='', complexity='...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+>           response = llm.invoke(messages)
+
+app\graph\nodes\classifier.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:395: in invoke
+    self.generate_prompt(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1025: in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:842: in generate
+    self._generate_with_cache(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1091: in _generate_with_cache
+    result = self._generate(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_groq\chat_models.py:474: in _generate
+    response = self.client.create(messages=message_dicts, **params)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\resources\chat\completions.py:461: in create
+    return self._post(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1242: in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <groq.Groq object at 0x00000160840CC260>
+cast_to = <class 'groq.types.chat.chat_completion.ChatCompletion'>
+options = FinalRequestOptions(method='post', url='/openai/v1/chat/completions', params={}, headers=NOT_GIVEN, max_retries=NOT_GI...cout-17b-16e-instruct', 'max_tokens': 512, 'n': 1, 'stop': None, 'stream': False, 'temperature': 0.1}, extra_json=None)
+
+    def request(
+        self,
+        cast_to: Type[ResponseT],
+        options: FinalRequestOptions,
+        *,
+        stream: bool = False,
+        stream_cls: type[_StreamT] | None = None,
+    ) -> ResponseT | _StreamT:
+        cast_to = self._maybe_override_cast_to(cast_to, options)
+    
+        # create a copy of the options we were given so that if the
+        # options are mutated later & we then retry, the retries are
+        # given the original options
+        input_options = model_copy(options)
+        if input_options.idempotency_key is None and input_options.method.lower() != "get":
+            # ensure the idempotency key is reused between requests
+            input_options.idempotency_key = self._idempotency_key()
+    
+        response: httpx.Response | None = None
+        max_retries = input_options.get_max_retries(self.max_retries)
+    
+        retries_taken = 0
+        for retries_taken in range(max_retries + 1):
+            options = model_copy(input_options)
+            options = self._prepare_options(options)
+    
+            remaining_retries = max_retries - retries_taken
+            request = self._build_request(options, retries_taken=retries_taken)
+            self._prepare_request(request)
+    
+            kwargs: HttpxSendArgs = {}
+            if self.custom_auth is not None:
+                kwargs["auth"] = self.custom_auth
+    
+            if options.follow_redirects is not None:
+                kwargs["follow_redirects"] = options.follow_redirects
+    
+            log.debug("Sending HTTP Request: %s %s", request.method, request.url)
+    
+            response = None
+            try:
+                response = self._client.send(
+                    request,
+                    stream=stream or self._should_stream_response_body(request=request),
+                    **kwargs,
+                )
+            except httpx.TimeoutException as err:
+                log.debug("Encountered httpx.TimeoutException", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising timeout error")
+                raise APITimeoutError(request=request) from err
+            except Exception as err:
+                log.debug("Encountered Exception", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising connection error")
+                raise APIConnectionError(request=request) from err
+    
+            log.debug(
+                'HTTP Response: %s %s "%i %s" %s',
+                request.method,
+                request.url,
+                response.status_code,
+                response.reason_phrase,
+                response.headers,
+            )
+    
+            try:
+                response.raise_for_status()
+            except httpx.HTTPStatusError as err:  # thrown on 4xx and 5xx status code
+                log.debug("Encountered httpx.HTTPStatusError", exc_info=True)
+    
+                if remaining_retries > 0 and self._should_retry(err.response):
+                    err.response.close()
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=response,
+                    )
+                    continue
+    
+                # If the response is streamed then we need to explicitly read the response
+                # to completion before attempting to access the response text.
+                if not err.response.is_closed:
+                    err.response.read()
+    
+                log.debug("Re-raising status error")
+>               raise self._make_status_error_from_response(err.response) from None
+E               groq.AuthenticationError: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1044: AuthenticationError
+
+During handling of the above exception, another exception occurred:
+
+workflow = <langgraph.graph.state.CompiledStateGraph object at 0x00000160840E3290>
+
+    def test_scenario_03_faq_research_loop(workflow):
+        """SC-03: FAQ re-search loop."""
+        state = AgentState(
+            query="이상한 요청으로 FAQ 재검색을 트리거",
+            inquiry_channel="이메일",
+            mock_preset="default",
+        )
+    
+>       result = workflow.invoke(state.model_dump())
+
+tests\scenarios\test_scenarios.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:3085: in invoke
+    for chunk in self.stream(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:2674: in stream
+    for _ in runner.tick(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_runner.py:162: in tick
+    run_with_retry(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_retry.py:42: in run_with_retry
+    return task.proc.invoke(task.input, config)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:657: in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:401: in invoke
+    ret = self.func(*args, **kwargs)
+app\graph\workflow.py:27: in node_classify
+    result = classify_question(state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+state = AgentState(query='이상한 요청으로 FAQ 재검색을 트리거', inquiry_channel='이메일', mock_preset='default', mock_override='', complexity='...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+            response = llm.invoke(messages)
+            llm_output = response.content
+    
+            logger.info("Question classified", llm_output=llm_output[:100])
+    
+            return {"llm_output": llm_output}
+    
+        except Exception as e:
+            logger.error("Question classification failed", error=str(e))
+>           raise LLMError(f"Failed to classify question: {str(e)}")
+E           app.core.exceptions.LLMError: Failed to classify question: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+E           During task with name 'classify' and id '97cac227-bc6f-35bb-00bd-004884562378'
+
+app\graph\nodes\classifier.py:63: LLMError
+---------------------------- Captured stdout setup ----------------------------
+{"event": "Workflow compiled successfully", "timestamp": "2026-03-26T15:00:37.188981Z", "level": "info"}
+---------------------------- Captured stdout call -----------------------------
+{"error": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}", "event": "Question classification failed", "timestamp": "2026-03-26T15:00:40.013399Z", "level": "error"}
+_________________ test_scenario_04_processing_rate_70_percent _________________
+
+state = AgentState(query='테스트 쿼리', inquiry_channel='웹채팅', mock_preset='default', mock_override='', complexity='high', category...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+>           response = llm.invoke(messages)
+
+app\graph\nodes\classifier.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:395: in invoke
+    self.generate_prompt(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1025: in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:842: in generate
+    self._generate_with_cache(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_core\language_models\chat_models.py:1091: in _generate_with_cache
+    result = self._generate(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langchain_groq\chat_models.py:474: in _generate
+    response = self.client.create(messages=message_dicts, **params)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\resources\chat\completions.py:461: in create
+    return self._post(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1242: in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <groq.Groq object at 0x00000160840E9A90>
+cast_to = <class 'groq.types.chat.chat_completion.ChatCompletion'>
+options = FinalRequestOptions(method='post', url='/openai/v1/chat/completions', params={}, headers=NOT_GIVEN, max_retries=NOT_GI...cout-17b-16e-instruct', 'max_tokens': 512, 'n': 1, 'stop': None, 'stream': False, 'temperature': 0.1}, extra_json=None)
+
+    def request(
+        self,
+        cast_to: Type[ResponseT],
+        options: FinalRequestOptions,
+        *,
+        stream: bool = False,
+        stream_cls: type[_StreamT] | None = None,
+    ) -> ResponseT | _StreamT:
+        cast_to = self._maybe_override_cast_to(cast_to, options)
+    
+        # create a copy of the options we were given so that if the
+        # options are mutated later & we then retry, the retries are
+        # given the original options
+        input_options = model_copy(options)
+        if input_options.idempotency_key is None and input_options.method.lower() != "get":
+            # ensure the idempotency key is reused between requests
+            input_options.idempotency_key = self._idempotency_key()
+    
+        response: httpx.Response | None = None
+        max_retries = input_options.get_max_retries(self.max_retries)
+    
+        retries_taken = 0
+        for retries_taken in range(max_retries + 1):
+            options = model_copy(input_options)
+            options = self._prepare_options(options)
+    
+            remaining_retries = max_retries - retries_taken
+            request = self._build_request(options, retries_taken=retries_taken)
+            self._prepare_request(request)
+    
+            kwargs: HttpxSendArgs = {}
+            if self.custom_auth is not None:
+                kwargs["auth"] = self.custom_auth
+    
+            if options.follow_redirects is not None:
+                kwargs["follow_redirects"] = options.follow_redirects
+    
+            log.debug("Sending HTTP Request: %s %s", request.method, request.url)
+    
+            response = None
+            try:
+                response = self._client.send(
+                    request,
+                    stream=stream or self._should_stream_response_body(request=request),
+                    **kwargs,
+                )
+            except httpx.TimeoutException as err:
+                log.debug("Encountered httpx.TimeoutException", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising timeout error")
+                raise APITimeoutError(request=request) from err
+            except Exception as err:
+                log.debug("Encountered Exception", exc_info=True)
+    
+                if remaining_retries > 0:
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=None,
+                    )
+                    continue
+    
+                log.debug("Raising connection error")
+                raise APIConnectionError(request=request) from err
+    
+            log.debug(
+                'HTTP Response: %s %s "%i %s" %s',
+                request.method,
+                request.url,
+                response.status_code,
+                response.reason_phrase,
+                response.headers,
+            )
+    
+            try:
+                response.raise_for_status()
+            except httpx.HTTPStatusError as err:  # thrown on 4xx and 5xx status code
+                log.debug("Encountered httpx.HTTPStatusError", exc_info=True)
+    
+                if remaining_retries > 0 and self._should_retry(err.response):
+                    err.response.close()
+                    self._sleep_for_retry(
+                        retries_taken=retries_taken,
+                        max_retries=max_retries,
+                        options=input_options,
+                        response=response,
+                    )
+                    continue
+    
+                # If the response is streamed then we need to explicitly read the response
+                # to completion before attempting to access the response text.
+                if not err.response.is_closed:
+                    err.response.read()
+    
+                log.debug("Re-raising status error")
+>               raise self._make_status_error_from_response(err.response) from None
+E               groq.AuthenticationError: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\groq\_base_client.py:1044: AuthenticationError
+
+During handling of the above exception, another exception occurred:
+
+workflow = <langgraph.graph.state.CompiledStateGraph object at 0x00000160840E9EE0>
+
+    def test_scenario_04_processing_rate_70_percent(workflow):
+        """SC-04: Processing rate 70% verification."""
+        auto_count = 0
+        total_count = 100
+    
+        # Test with mixed presets
+        presets = ["default"] * 70 + ["empty"] * 30
+    
+        for preset in presets:
+            state = AgentState(
+                query="테스트 쿼리",
+                inquiry_channel="웹채팅",
+                mock_preset=preset,
+            )
+>           result = workflow.invoke(state.model_dump())
+
+tests\scenarios\test_scenarios.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:3085: in invoke
+    for chunk in self.stream(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\main.py:2674: in stream
+    for _ in runner.tick(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_runner.py:162: in tick
+    run_with_retry(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\pregel\_retry.py:42: in run_with_retry
+    return task.proc.invoke(task.input, config)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:657: in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\langgraph\_internal\_runnable.py:401: in invoke
+    ret = self.func(*args, **kwargs)
+app\graph\workflow.py:27: in node_classify
+    result = classify_question(state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+state = AgentState(query='테스트 쿼리', inquiry_channel='웹채팅', mock_preset='default', mock_override='', complexity='high', category...='', agent_name='', queue_position=0, estimated_wait_minutes=0, priority='normal', process_type='', error_message=None)
+
+    def classify_question(state: AgentState) -> dict[str, Any]:
+        """Classify customer question by complexity and category using LLM."""
+        try:
+            llm = ChatGroq(
+                groq_api_key=settings.groq_api_key,
+                model_name=settings.groq_model,
+                temperature=settings.groq_temperature,
+                max_tokens=settings.groq_max_tokens,
+            )
+    
+            system_prompt = """당신은 고객 문의 분류 전문가입니다.
+    
+    고객의 질문을 분석하여 아래 기준으로 분류하세요.
+    
+    ## 분류 기준
+    
+    - complexity: "low" (단순 FAQ, 제품 사용법, 정책 안내) 또는 "high" (개인정보 관련, 환불/결제 분쟁, 복합 문의)
+    - category: 질문의 주제 카테고리 (예: "제품사용", "배송", "결제", "환불", "계정", "기타")
+    
+    ## 응답 형식
+    
+    반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트를 포함하지 마세요.
+    
+    {"complexity": "low 또는 high", "category": "카테고리명"}
+    """
+    
+            user_prompt = f"""[문의 채널] {state.inquiry_channel}
+    
+    [고객 질문] {state.query}
+    """
+    
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=user_prompt),
+            ]
+    
+            response = llm.invoke(messages)
+            llm_output = response.content
+    
+            logger.info("Question classified", llm_output=llm_output[:100])
+    
+            return {"llm_output": llm_output}
+    
+        except Exception as e:
+            logger.error("Question classification failed", error=str(e))
+>           raise LLMError(f"Failed to classify question: {str(e)}")
+E           app.core.exceptions.LLMError: Failed to classify question: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+E           During task with name 'classify' and id 'dc152725-3c34-2f17-a430-19ef843e7849'
+
+app\graph\nodes\classifier.py:63: LLMError
+---------------------------- Captured stdout setup ----------------------------
+{"event": "Workflow compiled successfully", "timestamp": "2026-03-26T15:00:40.425058Z", "level": "info"}
+---------------------------- Captured stdout call -----------------------------
+{"error": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}", "event": "Question classification failed", "timestamp": "2026-03-26T15:00:43.427935Z", "level": "error"}
+_____________ TestSearchFaq.test_empty_preset_returns_no_results ______________
+
+self = <tests.unit.test_faq_search.TestSearchFaq object at 0x000001603A49A480>
+
+    def test_empty_preset_returns_no_results(self):
+        """empty 프리셋: 결과 없음."""
+        state = {
+            "query": "테스트 질문",
+            "category": "기타",
+            "mock_preset": "empty",
+            "mock_override": "",
+        }
+        result = search_faq(state)
+        assert result["top_score"] == 0.0
+>       assert result["faq_count"] == 0
+E       KeyError: 'faq_count'
+
+tests\unit\test_faq_search.py:40: KeyError
+---------------------------- Captured stdout call -----------------------------
+{"error": "'dict' object has no attribute 'query'", "event": "FAQ search failed", "timestamp": "2026-03-26T15:00:43.886819Z", "level": "error"}
+_______________ TestSearchFaq.test_evaluation_log_is_valid_json _______________
+
+self = <tests.unit.test_faq_search.TestSearchFaq object at 0x000001603A49A9C0>
+
+    def test_evaluation_log_is_valid_json(self):
+        """평가 로그가 유효한 JSON."""
+        state = {
+            "query": "충전 케이블 연결 방법을 알려주세요",
+            "category": "제품사용",
+            "mock_preset": "default",
+            "mock_override": "",
+        }
+        result = search_faq(state)
+        log = json.loads(result["evaluation_log"])
+        assert isinstance(log, list)
+>       assert len(log) >= 1
+E       assert 0 >= 1
+E        +  where 0 = len([])
+
+tests\unit\test_faq_search.py:64: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"error": "'dict' object has no attribute 'query'", "event": "FAQ search failed", "timestamp": "2026-03-26T15:00:43.899916Z", "level": "error"}
+__________________ TestSearchFaq.test_high_score_stops_early __________________
+
+self = <tests.unit.test_faq_search.TestSearchFaq object at 0x000001603A49AC60>
+
+    def test_high_score_stops_early(self):
+        """관련도 90점 이상이면 재검색 중단."""
+        # 오버라이드로 높은 점수 강제
+        override = json.dumps({
+            "results": [{"title": "FAQ-001", "content": "답변", "score": 95}],
+            "top_score": 95.0,
+            "count": 1,
+        })
+        state = {
+            "query": "테스트",
+            "category": "기타",
+            "mock_preset": "default",
+            "mock_override": override,
+        }
+        result = search_faq(state)
+        assert result["search_attempts"] == 1
+>       assert result["top_score"] == 95.0
+E       assert 0.0 == 95.0
+
+tests\unit\test_faq_search.py:84: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"error": "'dict' object has no attribute 'query'", "event": "FAQ search failed", "timestamp": "2026-03-26T15:00:43.910915Z", "level": "error"}
+============================== warnings summary ===============================
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\_internal\_config.py:295
+  C:\Users\hiond\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\_internal\_config.py:295: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.10/migration/
+    warnings.warn(DEPRECATION_MESSAGE, DeprecationWarning)
+
+app\main.py:36
+  C:\Users\hiond\workspace\cs-agent\app\main.py:36: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\applications.py:4495
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\applications.py:4495
+  C:\Users\hiond\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\applications.py:4495: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)
+
+app\main.py:42
+  C:\Users\hiond\workspace\cs-agent\app\main.py:42: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("shutdown")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/integration/test_api.py::TestHealthEndpoint::test_health_check
+FAILED tests/integration/test_api.py::TestMetricsEndpoint::test_prometheus_metrics
+FAILED tests/integration/test_api.py::TestMetricsEndpoint::test_monthly_metrics_mock
+FAILED tests/integration/test_workflow.py::test_auto_answer_workflow - app.co...
+FAILED tests/integration/test_workflow.py::test_escalation_workflow - app.cor...
+FAILED tests/integration/test_workflow.py::test_workflow_with_error_preset - ...
+FAILED tests/integration/test_workflow.py::test_workflow_json_parsing - app.c...
+FAILED tests/scenarios/test_scenarios.py::test_scenario_01_simple_faq_auto_process
+FAILED tests/scenarios/test_scenarios.py::test_scenario_02_high_complexity_escalation
+FAILED tests/scenarios/test_scenarios.py::test_scenario_03_faq_research_loop
+FAILED tests/scenarios/test_scenarios.py::test_scenario_04_processing_rate_70_percent
+FAILED tests/unit/test_faq_search.py::TestSearchFaq::test_empty_preset_returns_no_results
+FAILED tests/unit/test_faq_search.py::TestSearchFaq::test_evaluation_log_is_valid_json
+FAILED tests/unit/test_faq_search.py::TestSearchFaq::test_high_score_stops_early
+================= 14 failed, 30 passed, 5 warnings in 44.37s ==================
