@@ -191,20 +191,178 @@ docker run -p 8000:8000 --env-file .env cs-agent
 
 ### API 테스트
 
+> 상세 테스트 방법은 [테스트 챗봇 수행 가이드](#테스트-챗봇-수행-가이드) 참조.
+
 ```bash
 # 헬스체크
 curl http://localhost:8000/health
 
-# 채팅 (SSE 스트리밍)
+# 채팅 (SSE 스트리밍, X-Api-Key 인증 필요)
 curl -N -X POST http://localhost:8000/v1/chat/stream \
   -H "Content-Type: application/json" \
+  -H "X-Api-Key: cs-agent-api-key-2026" \
   -d '{"query": "충전 케이블 연결 방법을 알려주세요", "inquiry_channel": "웹채팅"}'
 
 # 당일 메트릭
-curl http://localhost:8000/v1/metrics/daily
+curl http://localhost:8000/v1/metrics/daily \
+  -H "X-Api-Key: cs-agent-api-key-2026"
 
 # 월별 메트릭
-curl http://localhost:8000/v1/metrics/monthly?year=2026&month=3
+curl http://localhost:8000/v1/metrics/monthly?year=2026&month=3 \
+  -H "X-Api-Key: cs-agent-api-key-2026"
+```
+
+## 테스트 챗봇 수행 가이드
+
+### 1. Streamlit 챗봇 UI
+
+Streamlit 기반 웹 챗봇 UI(`chatbot.py`)로 FAQ 자동 응답 에이전트를 시각적으로 테스트 가능.
+
+#### 사전 준비
+
+```bash
+# 1. Streamlit 설치 (프로젝트 의존성에 미포함, 별도 설치 필요)
+pip install streamlit
+
+# 2. 환경 변수 설정
+cp .env.example .env
+# .env 파일에서 아래 값 설정:
+#   GROQ_API_KEY=<실제 Groq API 키>
+#   API_KEY=cs-agent-api-key-2026   ← chatbot.py에 하드코딩된 값과 일치 필요
+#   USE_MOCK=true                    ← Mock 모드로 외부 시스템 없이 테스트
+
+# 3. FastAPI 서버 실행 (별도 터미널)
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+> **참고**: `chatbot.py`의 `API_KEY` 상수(`cs-agent-api-key-2026`)와
+> `.env` 파일의 `API_KEY` 값이 일치해야 인증 통과.
+> curl로 직접 테스트 시에도 동일한 키를 `X-Api-Key` 헤더에 사용.
+
+#### 챗봇 UI 실행
+
+```bash
+streamlit run chatbot.py
+```
+
+실행 후 브라우저에서 `http://localhost:8501` 접속.
+
+#### UI 구성
+
+| 영역 | 기능 |
+|------|------|
+| 사이드바 — 문의 채널 | 웹채팅, 카카오톡, 전화, 이메일 중 선택 |
+| 사이드바 — API 서버 | 백엔드 서버 URL 변경 (기본: `http://localhost:8000`) |
+| 사이드바 — 서버 상태 확인 | `/health` 엔드포인트로 서버 연결 상태 확인 |
+| 사이드바 — 대화 초기화 | 채팅 히스토리 초기화 |
+| 메인 — 채팅 입력 | 하단 입력창에 고객 질문 입력 |
+| 메인 — 응답 표시 | SSE 스트리밍으로 실시간 답변 렌더링 |
+| 메인 — 메타데이터 | 자동 답변 시 카테고리/복잡도/검색 시도/절감 비용 표시,  |
+|  | 이관 시 담당 상담원/대기 순번/예상 대기 시간 표시 |
+
+#### 테스트 시나리오별 예시 질문
+
+| 시나리오 | 예시 질문 | 예상 결과 |
+|---------|----------|----------|
+| FAQ 자동 응답 | "충전 케이블 연결 방법을 알려주세요" | 자동 답변 + 28,000원 절감 |
+| 상담원 이관 | "환불 분쟁으로 인한 법적 소송 관련 상담이 필요합니다" | 상담원 배정 안내 |
+| 간단 제품 문의 | "배터리 잔량 확인 방법이 궁금해요" | 자동 답변 |
+| 복잡 문의 | "제품 불량으로 교환 후 재불량이 발생했습니다" | 상담원 이관 |
+
+### 2. curl을 이용한 API 직접 테스트
+
+서버 실행 상태에서 터미널로 직접 API 호출 가능.
+
+```bash
+# 서버 상태 확인
+curl http://localhost:8000/health
+
+# FAQ 자동 응답 테스트 (SSE 스트리밍)
+curl -N -X POST http://localhost:8000/v1/chat/stream \
+  -H "Content-Type: application/json" \
+  -H "X-Api-Key: cs-agent-api-key-2026" \
+  -d '{"query": "충전 케이블 연결 방법을 알려주세요", "inquiry_channel": "웹채팅"}'
+
+# 상담원 이관 테스트
+curl -N -X POST http://localhost:8000/v1/chat/stream \
+  -H "Content-Type: application/json" \
+  -H "X-Api-Key: cs-agent-api-key-2026" \
+  -d '{"query": "환불 분쟁으로 인한 법적 소송 관련 상담이 필요합니다", "inquiry_channel": "전화"}'
+
+# 당일 메트릭 조회
+curl http://localhost:8000/v1/metrics/daily \
+  -H "X-Api-Key: cs-agent-api-key-2026"
+
+# 월별 메트릭 조회
+curl http://localhost:8000/v1/metrics/monthly?year=2026&month=3 \
+  -H "X-Api-Key: cs-agent-api-key-2026"
+```
+
+#### SSE 응답 형식
+
+```
+event: message
+data: {"type": "token", "content": "답변 텍스트 조각"}
+
+event: metadata
+data: {"process_type": "auto", "category": "제품사용", "saved_cost": 28000, ...}
+
+event: done
+data: {}
+```
+
+### 3. 자동화 테스트 (pytest)
+
+Mock 모드(`USE_MOCK=true`)에서 외부 시스템 없이 전체 테스트 수행 가능.
+
+```bash
+# 전체 테스트 실행
+pytest tests/ -v
+
+# 단위 테스트만 실행
+pytest tests/unit/ -v
+
+# 통합 테스트만 실행
+pytest tests/integration/ -v
+
+# 시나리오 테스트만 실행
+pytest tests/scenarios/ -v
+
+# 커버리지 포함 실행
+pytest tests/ --cov=app --cov-report=term-missing
+
+# 특정 마커로 실행
+pytest -m unit -v
+pytest -m integration -v
+pytest -m scenario -v
+```
+
+#### 시나리오 테스트 목록
+
+| ID | 시나리오 | 검증 항목 |
+|----|---------|----------|
+| SC-01 | 단순 FAQ 자동 처리 | `auto_processable=True`, 절감 비용 > 0, 답변 생성 |
+| SC-02 | 고복잡도 상담원 이관 | `auto_processable=False`, 상담원 배정, 우선순위 high |
+| SC-03 | FAQ 재검색 루프 | 검색 시도 횟수 >= 1 (최대 3회 반복) |
+| SC-04 | 자동 처리율 70% 검증 | 100건 중 자동 처리율 60% 이상 달성 |
+
+### 4. Mock 모드 활용
+
+`.env` 파일의 `USE_MOCK=true` 설정 시 외부 시스템(ChromaDB, PostgreSQL, 상담원 시스템) 없이 동작.
+
+| Mock Preset | 동작 |
+|-------------|------|
+| `default` | 정상 FAQ 검색 결과 반환 (자동 답변 경로) |
+| `empty` | FAQ 검색 결과 없음 (이관 경로) |
+| `error` | 고복잡도 분류 (이관 경로) |
+| `timeout` | 타임아웃 시뮬레이션 |
+
+```bash
+# Mock preset을 지정한 curl 테스트
+curl -N -X POST http://localhost:8000/v1/chat/stream \
+  -H "Content-Type: application/json" \
+  -H "X-Api-Key: cs-agent-api-key-2026" \
+  -d '{"query": "테스트 질문", "inquiry_channel": "웹채팅", "mock_preset": "empty"}'
 ```
 
 ## API 엔드포인트
